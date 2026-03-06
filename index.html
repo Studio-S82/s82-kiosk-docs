@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>S82 Kiosk – Tài liệu hướng dẫn</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+:root{
+  --bg:       #0d0810;
+  --bg2:      #130c18;
+  --bg3:      #1c1124;
+  --card:     #18101f;
+  --border:   rgba(212,77,122,0.18);
+  --border2:  rgba(212,77,122,0.38);
+  --pink:     #ff6b9d;
+  --pink2:    #d44d7a;
+  --pink3:    #a3294f;
+  --text:     #f0d6e8;
+  --muted:    #8b5a78;
+  --code-bg:  #0a0610;
+  --gold:     #ffd700;
+  --success:  #56d364;
+  --sidebar-w:260px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Sora',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  display:flex;
+  min-height:100vh;
+  font-size:15px;
+  line-height:1.7;
+}
+
+/* ── Sidebar ── */
+.sidebar{
+  width:var(--sidebar-w);
+  position:fixed;
+  top:0;left:0;bottom:0;
+  background:var(--bg2);
+  border-right:1px solid var(--border);
+  overflow-y:auto;
+  z-index:100;
+  display:flex;flex-direction:column;
+}
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--pink3);border-radius:2px}
+
+.sidebar-logo{
+  padding:28px 22px 20px;
+  border-bottom:1px solid var(--border);
+}
+.logo-icon{font-size:2rem;filter:drop-shadow(0 0 12px rgba(255,107,157,.5))}
+.logo-name{
+  font-size:1.15rem;font-weight:800;
+  background:linear-gradient(135deg,var(--pink),var(--pink3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-top:4px;
+}
+.logo-ver{font-size:0.7rem;color:var(--muted);font-weight:500;letter-spacing:.06em}
+
+.nav-group{padding:16px 0 4px}
+.nav-group-label{
+  font-size:0.65rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;
+  color:var(--muted);padding:0 22px 8px;
+}
+.nav-link{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 22px;
+  font-size:0.84rem;font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  transition:.15s;border-left:2px solid transparent;
+}
+.nav-link i{width:16px;text-align:center;font-size:.8rem}
+.nav-link:hover{color:var(--text);background:rgba(255,107,157,.05)}
+.nav-link.active{color:var(--pink);border-left-color:var(--pink);background:rgba(255,107,157,.07)}
+
+/* ── Main ── */
+.main{
+  margin-left:var(--sidebar-w);
+  flex:1;
+  max-width:900px;
+  padding:0 48px 80px;
+}
+
+/* ── Hero ── */
+.hero{
+  padding:64px 0 48px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:56px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(212,77,122,.12),transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(212,77,122,.1);border:1px solid var(--border2);
+  border-radius:999px;padding:5px 14px;
+  font-size:.72rem;font-weight:700;color:var(--pink);
+  letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:18px;
+}
+.hero h1{
+  font-size:3rem;font-weight:800;line-height:1.1;
+  background:linear-gradient(135deg,#fff 30%,var(--pink) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:16px;
+}
+.hero-desc{font-size:1.05rem;color:var(--muted);max-width:580px;line-height:1.7}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:8px;padding:6px 13px;
+  font-size:.78rem;font-weight:600;color:var(--text);
+}
+.tag i{color:var(--pink);font-size:.75rem}
+
+/* ── Sections ── */
+.section{margin-bottom:56px;scroll-margin-top:24px}
+.section-title{
+  font-size:1.45rem;font-weight:800;
+  color:#fff;margin-bottom:6px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-title i{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--pink3),var(--pink2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;color:#fff;flex-shrink:0;
+}
+.section-sub{color:var(--muted);margin-bottom:24px;font-size:.9rem}
+.divider{height:1px;background:var(--border);margin:48px 0}
+
+/* ── Cards ── */
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card-grid.triple{grid-template-columns:repeat(3,1fr)}
+.feature-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:22px;
+  transition:.2s;position:relative;overflow:hidden;
+}
+.feature-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--pink3),var(--pink));
+}
+.feature-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.fc-icon{
+  width:40px;height:40px;border-radius:10px;margin-bottom:14px;
+  background:rgba(255,107,157,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--pink);
+}
+.fc-title{font-weight:700;font-size:.95rem;margin-bottom:6px;color:#fff}
+.fc-desc{font-size:.82rem;color:var(--muted);line-height:1.55}
+
+/* ── Steps ── */
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:20px;position:relative}
+.step+.step::before{
+  content:'';position:absolute;left:19px;top:-20px;
+  width:1px;height:20px;background:var(--border);
+}
+.step-num{
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pink3),var(--pink2));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.85rem;color:#fff;
+  box-shadow:0 0 14px rgba(212,77,122,.3);
+}
+.step-body{padding-bottom:28px;flex:1}
+.step-title{font-weight:700;font-size:.98rem;margin-bottom:6px;color:#fff}
+.step-desc{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+/* ── Code blocks ── */
+pre{
+  background:var(--code-bg);border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.8rem;line-height:1.7;
+  overflow-x:auto;
+  margin:14px 0;
+  color:#e0c8d8;
+}
+code{
+  font-family:'JetBrains Mono',monospace;
+  background:rgba(255,107,157,.1);
+  border:1px solid rgba(255,107,157,.2);
+  border-radius:5px;padding:2px 7px;
+  font-size:.82rem;color:var(--pink);
+}
+pre code{background:none;border:none;padding:0;color:inherit;font-size:inherit}
+.c-key{color:#ff9abb}
+.c-val{color:#88d4a8}
+.c-str{color:#ffd788}
+.c-cmt{color:#5a3d50;font-style:italic}
+
+/* ── Tables ── */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.85rem}
+th{
+  background:var(--bg3);color:var(--muted);
+  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);
+}
+td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,107,157,.03)}
+td code{font-size:.78rem}
+
+/* ── Alert boxes ── */
+.alert{
+  display:flex;gap:14px;align-items:flex-start;
+  border-radius:12px;padding:16px 18px;margin:14px 0;
+  border:1px solid;font-size:.85rem;line-height:1.6;
+}
+.alert i{font-size:1rem;margin-top:2px;flex-shrink:0}
+.alert-info{ background:rgba(88,166,255,.07);  border-color:rgba(88,166,255,.25); color:#8bc4ff}
+.alert-info i{color:#58a6ff}
+.alert-warn{ background:rgba(255,215,0,.07);   border-color:rgba(255,215,0,.25);  color:#ffd700}
+.alert-warn i{color:var(--gold)}
+.alert-tip{  background:rgba(86,211,100,.07);  border-color:rgba(86,211,100,.25); color:#56d364}
+.alert-tip i{color:var(--success)}
+
+/* ── Config option rows ── */
+.config-block{display:flex;flex-direction:column;gap:3px;margin:10px 0}
+
+/* ── Footer ── */
+.footer{
+  border-top:1px solid var(--border);
+  padding:32px 0 0;margin-top:64px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.78rem;color:var(--muted);
+}
+.footer a{color:var(--pink);text-decoration:none}
+
+/* ── Scrollspy active highlight ── */
+@media(max-width:900px){
+  .sidebar{display:none}
+  .main{margin-left:0;padding:0 24px 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">🌸</div>
+    <div class="logo-name">S82 Kiosk</div>
+    <div class="logo-ver">v1.0.0 · FiveM Script</div>
+  </div>
+
+  <nav>
+    <div class="nav-group">
+      <div class="nav-group-label">Bắt đầu</div>
+      <a class="nav-link active" href="#intro"><i class="fas fa-rocket"></i>Giới thiệu</a>
+      <a class="nav-link" href="#requirements"><i class="fas fa-list-check"></i>Yêu cầu</a>
+      <a class="nav-link" href="#install"><i class="fas fa-download"></i>Cài đặt</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Cấu hình</div>
+      <a class="nav-link" href="#config-basic"><i class="fas fa-sliders"></i>Cơ bản</a>
+      <a class="nav-link" href="#config-ui"><i class="fas fa-palette"></i>Giao diện</a>
+      <a class="nav-link" href="#config-stalls"><i class="fas fa-map-pin"></i>Vị trí gian hàng</a>
+      <a class="nav-link" href="#config-payment"><i class="fas fa-wallet"></i>Thanh toán</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Tính năng</div>
+      <a class="nav-link" href="#features"><i class="fas fa-star"></i>Tổng quan</a>
+      <a class="nav-link" href="#inventory"><i class="fas fa-boxes-stacked"></i>Multi-Inventory</a>
+      <a class="nav-link" href="#payment-detail"><i class="fas fa-coins"></i>Loại thanh toán</a>
+      <a class="nav-link" href="#admin"><i class="fas fa-shield"></i>Admin</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Hướng dẫn</div>
+      <a class="nav-link" href="#guide-rent"><i class="fas fa-store"></i>Thuê gian hàng</a>
+      <a class="nav-link" href="#guide-sell"><i class="fas fa-tag"></i>Đăng bán</a>
+      <a class="nav-link" href="#guide-buy"><i class="fas fa-cart-shopping"></i>Mua hàng</a>
+      <a class="nav-link" href="#localization"><i class="fas fa-language"></i>Ngôn ngữ</a>
+    </div>
+  </nav>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero" id="intro">
+    <div class="hero-badge"><i class="fas fa-store"></i> FiveM Script</div>
+    <h1>S82 Kiosk</h1>
+    <p class="hero-desc">Hệ thống chợ gian hàng cho người chơi. Cho phép thuê ki-ốt, đăng bán vật phẩm, quản lý giá và nhận tiền ngay trong game với giao diện NUI đẹp mắt.</p>
+    <div class="hero-tags">
+      <span class="tag"><i class="fas fa-code-branch"></i>ESX / QB / QBX</span>
+      <span class="tag"><i class="fas fa-boxes-stacked"></i>Multi-Inventory</span>
+      <span class="tag"><i class="fas fa-language"></i>VI / EN</span>
+      <span class="tag"><i class="fas fa-database"></i>oxmysql</span>
+      <span class="tag"><i class="fas fa-bullseye"></i>ox_target</span>
+      <span class="tag"><i class="fas fa-layer-group"></i>ox_lib</span>
+    </div>
+  </div>
+
+  <!-- REQUIREMENTS -->
+  <div class="section" id="requirements">
+    <div class="section-title"><i class="fas fa-list-check"></i>Yêu cầu</div>
+    <p class="section-sub">Script yêu cầu các dependency sau đây đã được cài đặt và khởi động trước.</p>
+    <table>
+      <thead><tr><th>Dependency</th><th>Phiên bản tối thiểu</th><th>Bắt buộc</th></tr></thead>
+      <tbody>
+        <tr><td><code>ox_lib</code></td><td>3.x+</td><td><span style="color:var(--pink)">✔ Bắt buộc</span></td></tr>
+        <tr><td><code>ox_target</code></td><td>3.x+</td><td><span style="color:var(--pink)">✔ Bắt buộc</span></td></tr>
+        <tr><td><code>oxmysql</code></td><td>2.x+</td><td><span style="color:var(--pink)">✔ Bắt buộc</span></td></tr>
+        <tr><td><code>ox_inventory</code></td><td>Bất kỳ</td><td>Mặc định (auto-detect)</td></tr>
+        <tr><td><code>qb-inventory / ps-inventory / qs-inventory</code></td><td>Bất kỳ</td><td>Tuỳ chọn thay thế</td></tr>
+      </tbody>
+    </table>
+    <div class="alert alert-info">
+      <i class="fas fa-circle-info"></i>
+      <span>Script tự động nhận biết framework (<code>ESX</code>, <code>QB</code>, <code>QBX</code>) và inventory đang dùng. Không cần cấu hình thủ công nếu bạn để <code>auto</code>.</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- INSTALL -->
+  <div class="section" id="install">
+    <div class="section-title"><i class="fas fa-download"></i>Cài đặt</div>
+    <p class="section-sub">Làm theo từng bước sau để cài đặt S82 Kiosk lên server.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Giải nén vào thư mục resources</div>
+          <div class="step-desc">Đặt thư mục <code>s82_kiosk</code> vào <code>[resources]/[s82]/ </code>hoặc bất kỳ thư mục nào trên server.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Thêm vào server.cfg</div>
+          <pre><code><span class="c-key">ensure</span> <span class="c-val">s82_kiosk</span></code></pre>
+          <div class="step-desc">Đảm bảo các dependency được ensure <strong>trước</strong> s82_kiosk.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Database tự động tạo</div>
+          <div class="step-desc">Khi resource khởi động lần đầu, SQL sẽ tự động tạo bảng <code>s82_stalls</code> và <code>s82_transactions</code>. Không cần import thủ công.</div>
+          <div class="alert alert-warn" style="margin-top:10px">
+            <i class="fas fa-triangle-exclamation"></i>
+            <span>Nếu auto-install thất bại (lỗi quyền MySQL), hãy chạy file <code>s82_kiosk.sql</code> thủ công qua phpMyAdmin hoặc HeidiSQL.</span>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Cấu hình config.lua</div>
+          <div class="step-desc">Mở <code>config.lua</code> và điều chỉnh các thông số theo server của bạn. Xem chi tiết ở phần Cấu hình bên dưới.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">Khởi động lại server</div>
+          <div class="step-desc">Restart server hoặc dùng <code>refresh</code> + <code>ensure s82_kiosk</code> trong console.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONFIG BASIC -->
+  <div class="section" id="config-basic">
+    <div class="section-title"><i class="fas fa-sliders"></i>Cấu hình cơ bản</div>
+    <p class="section-sub">Các thông số chính trong <code>config.lua</code>.</p>
+
+    <table>
+      <thead><tr><th>Tham số</th><th>Mặc định</th><th>Mô tả</th></tr></thead>
+      <tbody>
+        <tr><td><code>Config.Framework</code></td><td><code>'auto'</code></td><td>Framework: <code>'auto'</code>, <code>'ESX'</code>, <code>'QB'</code>, <code>'QBX'</code></td></tr>
+        <tr><td><code>Config.InventoryType</code></td><td><code>'auto'</code></td><td>Inventory: <code>'auto'</code>, <code>'ox_inventory'</code>, <code>'qb-inventory'</code>, <code>'ps-inventory'</code>, <code>'qs-inventory'</code></td></tr>
+        <tr><td><code>Config.Locale</code></td><td><code>'vi'</code></td><td>Ngôn ngữ: <code>'vi'</code> (Tiếng Việt) hoặc <code>'en'</code> (English)</td></tr>
+        <tr><td><code>Config.TaxPercent</code></td><td><code>5</code></td><td>Thuế mỗi giao dịch (%)</td></tr>
+        <tr><td><code>Config.MinPrice</code></td><td><code>1</code></td><td>Giá bán tối thiểu ($)</td></tr>
+        <tr><td><code>Config.MaxPrice</code></td><td><code>1000000</code></td><td>Giá bán tối đa ($)</td></tr>
+        <tr><td><code>Config.StallSlots</code></td><td><code>25</code></td><td>Số ô tối đa mỗi gian hàng</td></tr>
+        <tr><td><code>Config.StallProp</code></td><td><code>'prop_pier_kiosk_03'</code></td><td>Tên prop ki-ốt hiển thị trong game</td></tr>
+        <tr><td><code>Config.MaxStallNameLength</code></td><td><code>15</code></td><td>Độ dài tối đa tên gian hàng</td></tr>
+        <tr><td><code>Config.MaxDistance</code></td><td><code>2.5</code></td><td>Khoảng cách tối đa để tương tác (m)</td></tr>
+        <tr><td><code>Config.BuyCooldown</code></td><td><code>500</code></td><td>Thời gian chờ giữa các lần mua (ms)</td></tr>
+      </tbody>
+    </table>
+
+    <pre><code><span class="c-cmt">-- Tùy chọn thuê gian hàng</span>
+<span class="c-key">Config.RentOptions</span> = {
+    { <span class="c-str">days</span> = <span class="c-val">1</span>, <span class="c-str">price</span> = <span class="c-val">2000</span>,  <span class="c-str">deposit</span> = <span class="c-val">5000</span> },
+    { <span class="c-str">days</span> = <span class="c-val">3</span>, <span class="c-str">price</span> = <span class="c-val">5000</span>,  <span class="c-str">deposit</span> = <span class="c-val">5000</span> },
+    { <span class="c-str">days</span> = <span class="c-val">7</span>, <span class="c-str">price</span> = <span class="c-val">9000</span>,  <span class="c-str">deposit</span> = <span class="c-val">5000</span> },
+}</code></pre>
+  </div>
+
+  <!-- CONFIG UI -->
+  <div class="section" id="config-ui">
+    <div class="section-title"><i class="fas fa-palette"></i>Cấu hình giao diện</div>
+    <p class="section-sub">Tuỳ chỉnh giao diện NUI trong <code>Config.UI</code>.</p>
+    <table>
+      <thead><tr><th>Tham số</th><th>Mô tả</th></tr></thead>
+      <tbody>
+        <tr><td><code>LogoURL</code></td><td>URL ảnh logo máy chủ hiển thị góc trái header. Để <code>''</code> để ẩn.</td></tr>
+        <tr><td><code>ItemImageURL</code></td><td>Template URL ảnh item. Dùng <code>{name}</code> làm placeholder tên item. Ví dụ: <code>nui://ox_inventory/web/images/{name}.png</code></td></tr>
+        <tr><td><code>ClickSound</code></td><td>Đường dẫn file âm thanh click (đặt vào <code>html/sounds/</code>)</td></tr>
+        <tr><td><code>ClickVolume</code></td><td>Âm lượng click (0.0 – 1.0)</td></tr>
+        <tr><td><code>PetalEnabled</code></td><td><code>true</code> / <code>false</code> – hiệu ứng hoa anh đào rơi trong UI</td></tr>
+        <tr><td><code>PetalCount</code></td><td>Số cánh hoa anh đào (khuyến nghị 12–20)</td></tr>
+      </tbody>
+    </table>
+    <div class="alert alert-tip">
+      <i class="fas fa-lightbulb"></i>
+      <span>Đặt file <code>click.ogg</code> của bạn vào <code>s82_kiosk/html/sounds/click.ogg</code> để tùy chỉnh âm thanh click.</span>
+    </div>
+  </div>
+
+  <!-- CONFIG STALLS -->
+  <div class="section" id="config-stalls">
+    <div class="section-title"><i class="fas fa-map-pin"></i>Cấu hình vị trí gian hàng</div>
+    <p class="section-sub">Thêm/bớt vị trí ki-ốt trong <code>Config.Stalls</code>. Mỗi entry là 1 vị trí có thể thuê.</p>
+    <pre><code><span class="c-key">Config.Stalls</span> = {
+    { <span class="c-str">coords</span> = <span class="c-val">vector4</span>(-400.81, 6057.04, 30.52,  48.00), <span class="c-str">name</span> = <span class="c-str">'Gian hàng số 1'</span> },
+    { <span class="c-str">coords</span> = <span class="c-val">vector4</span>(-397.30, 6061.08, 30.52,  42.00), <span class="c-str">name</span> = <span class="c-str">'Gian hàng số 2'</span> },
+    <span class="c-cmt">-- Thêm vị trí mới ở đây...</span>
+}</code></pre>
+
+    <div class="alert alert-info">
+      <i class="fas fa-circle-info"></i>
+      <div>
+        <strong>Cách tìm toạ độ mới:</strong><br/>
+        Dùng lệnh <code>/marketcreate</code> (yêu cầu quyền admin). Nhân vật sẽ đứng im, prop ghost xuất hiện và bạn điều khiển bằng:<br/><br/>
+        <code>W/S/A/D</code> di chuyển · <code>Q/E</code> xoay · <code>SHIFT</code> di chuyển nhanh · <code>ENTER</code> lưu · <code>ESC</code> huỷ
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIG PAYMENT -->
+  <div class="section" id="config-payment">
+    <div class="section-title"><i class="fas fa-wallet"></i>Cấu hình thanh toán</div>
+    <p class="section-sub">Bật/tắt các hình thức nhận tiền trong <code>Config.PaymentTypes</code>.</p>
+    <pre><code><span class="c-key">Config.PaymentTypes</span> = {
+    <span class="c-str">bank</span>        = <span class="c-val">true</span>,   <span class="c-cmt">-- Ngân hàng (chuyển ngay, offline-safe)</span>
+    <span class="c-str">money</span>       = <span class="c-val">true</span>,   <span class="c-cmt">-- Tiền mặt (phải online mới nhận được)</span>
+    <span class="c-str">black_money</span> = <span class="c-val">false</span>,  <span class="c-cmt">-- Tiền bẩn (tắt mặc định)</span>
+}</code></pre>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES -->
+  <div class="section" id="features">
+    <div class="section-title"><i class="fas fa-star"></i>Tính năng nổi bật</div>
+    <p class="section-sub">S82 Kiosk cung cấp một hệ thống chợ player-to-player hoàn chỉnh.</p>
+    <div class="card-grid">
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fas fa-store"></i></div>
+        <div class="fc-title">Thuê Ki-ốt theo thời hạn</div>
+        <div class="fc-desc">Player thuê gian hàng 1/3/7 ngày. Đặt cọc hoàn trả nếu online khi hết hạn. Phí thuê không hoàn lại.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fas fa-tag"></i></div>
+        <div class="fc-title">Quản lý sản phẩm</div>
+        <div class="fc-desc">Thêm/xóa vật phẩm, đặt giá từng loại, xem 25 ô gian hàng theo dạng lưới trực quan.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fas fa-coins"></i></div>
+        <div class="fc-title">3 loại thanh toán</div>
+        <div class="fc-desc">Bank (chuyển ngay), Tiền mặt và Tiền bẩn. Tiền mặt/bẩn tích lũy và chủ hàng tự đến nhận khi online.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fas fa-boxes-stacked"></i></div>
+        <div class="fc-title">Multi-Inventory</div>
+        <div class="fc-desc">Tự động nhận biết và hỗ trợ ox_inventory, qb-inventory, ps-inventory, qs-inventory.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fas fa-gun"></i></div>
+        <div class="fc-title">Hỗ trợ vũ khí</div>
+        <div class="fc-desc">Vật phẩm vũ khí (WEAPON_*) trong ox_inventory được nhận diện và có thể đăng bán như vật phẩm thông thường.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fas fa-clock-rotate-left"></i></div>
+        <div class="fc-title">Lịch sử giao dịch</div>
+        <div class="fc-desc">Chủ gian hàng xem được 50 giao dịch gần nhất: người mua, sản phẩm, số lượng, giá và thời gian.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fas fa-palette"></i></div>
+        <div class="fc-title">UI Dark Pink Theme</div>
+        <div class="fc-desc">Giao diện hồng tối với hiệu ứng hoa anh đào rơi, logo server tùy chỉnh và âm thanh click.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fas fa-language"></i></div>
+        <div class="fc-title">Song ngữ VI / EN</div>
+        <div class="fc-desc">Toàn bộ text trong game và menu ox_lib đều dịch đầy đủ. Chuyển đổi bằng 1 dòng config.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVENTORY -->
+  <div class="section" id="inventory">
+    <div class="section-title"><i class="fas fa-boxes-stacked"></i>Multi-Inventory Support</div>
+    <p class="section-sub">Script tự động phát hiện inventory đang chạy theo thứ tự ưu tiên:</p>
+    <table>
+      <thead><tr><th>Inventory</th><th>Trạng thái</th><th>Ghi chú</th></tr></thead>
+      <tbody>
+        <tr><td><code>ox_inventory</code></td><td><span style="color:var(--success)">✔ Đầy đủ</span></td><td>Hỗ trợ stash, weapons, metadata. Mặc định.</td></tr>
+        <tr><td><code>qb-inventory</code></td><td><span style="color:var(--success)">✔ Hỗ trợ</span></td><td>Dùng QBCore API</td></tr>
+        <tr><td><code>ps-inventory</code></td><td><span style="color:var(--success)">✔ Hỗ trợ</span></td><td>Dùng ps-inventory exports</td></tr>
+        <tr><td><code>qs-inventory</code></td><td><span style="color:var(--success)">✔ Hỗ trợ</span></td><td>Dùng qs-inventory exports</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--muted);margin-top:10px">Để chỉ định thủ công: <code>Config.InventoryType = 'qb-inventory'</code></p>
+  </div>
+
+  <!-- PAYMENT DETAIL -->
+  <div class="section" id="payment-detail">
+    <div class="section-title"><i class="fas fa-coins"></i>Chi tiết loại thanh toán</div>
+    <div class="card-grid triple">
+      <div class="feature-card">
+        <div class="fc-icon">🏦</div>
+        <div class="fc-title">Ngân hàng</div>
+        <div class="fc-desc">Tiền chuyển thẳng vào tài khoản bank của chủ hàng ngay khi bán. Hoạt động kể cả khi chủ hàng offline.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">💵</div>
+        <div class="fc-title">Tiền mặt</div>
+        <div class="fc-desc">Tiền tích lũy trong gian hàng. Chủ hàng phải online, mở gian hàng và bấm "Nhận tiền" để lấy.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">💴</div>
+        <div class="fc-title">Tiền bẩn</div>
+        <div class="fc-desc">Tương tự tiền mặt nhưng nhận dưới dạng black_money. Tiền mất nếu không nhận trước khi hết hạn.</div>
+      </div>
+    </div>
+    <div class="alert alert-warn">
+      <i class="fas fa-triangle-exclamation"></i>
+      <span>Tiền mặt và tiền bẩn đang chờ sẽ <strong>mất vĩnh viễn</strong> nếu gian hàng hết hạn mà chưa được nhận. Khuyến khích người dùng chọn Bank nếu không online thường xuyên.</span>
+    </div>
+  </div>
+
+  <!-- ADMIN -->
+  <div class="section" id="admin">
+    <div class="section-title"><i class="fas fa-shield"></i>Lệnh Admin</div>
+    <p class="section-sub">Yêu cầu nhóm quyền được cấu hình trong <code>Config.AdminGroups</code>.</p>
+    <table>
+      <thead><tr><th>Lệnh</th><th>Mô tả</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>/marketcreate</code></td>
+          <td>Bật chế độ đặt prop để lấy toạ độ gian hàng mới. Nhân vật đứng im, prop ghost xuất hiện để điều khiển vị trí.</td>
+        </tr>
+        <tr>
+          <td><code>/marketremove [id]</code></td>
+          <td>Xoá gian hàng theo ID. Toàn bộ đồ vật bị xoá, không hoàn cọc.</td>
+        </tr>
+      </tbody>
+    </table>
+    <pre><code><span class="c-cmt">-- Cấu hình nhóm quyền admin</span>
+<span class="c-key">Config.AdminGroups</span> = { <span class="c-str">'admin'</span>, <span class="c-str">'superadmin'</span>, <span class="c-str">'god'</span> }</code></pre>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- GUIDE RENT -->
+  <div class="section" id="guide-rent">
+    <div class="section-title"><i class="fas fa-store"></i>Hướng dẫn: Thuê gian hàng</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Đến NPC quản lý chợ</div>
+          <div class="step-desc">Tìm NPC có blip trên bản đồ. Đứng gần và nhìn vào để hiện tùy chọn ox_target.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Chọn thời hạn thuê</div>
+          <div class="step-desc">Menu hiện danh sách các gói thuê (1/3/7 ngày). Mỗi gói có phí thuê + tiền đặt cọc. Tổng số tiền sẽ bị trừ từ tài khoản ngân hàng.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Gian hàng xuất hiện</div>
+          <div class="step-desc">Prop ki-ốt được spawn tại vị trí ngẫu nhiên còn trống. Tên mặc định là <strong>S82 Kiosk</strong>. Vào gian hàng để bắt đầu quản lý.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIDE SELL -->
+  <div class="section" id="guide-sell">
+    <div class="section-title"><i class="fas fa-tag"></i>Hướng dẫn: Đăng bán sản phẩm</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Mở gian hàng của mình</div>
+          <div class="step-desc">Đứng gần ki-ốt, chọn <strong>Quản lý Gian Hàng</strong> qua ox_target.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Tab "Quản lý" → Nhấn "Thêm sản phẩm"</div>
+          <div class="step-desc">Chọn vật phẩm từ túi đồ của bạn, nhập số lượng và giá bán mỗi đơn vị. Vật phẩm sẽ chuyển vào stash gian hàng.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Tùy chỉnh gian hàng</div>
+          <div class="step-desc">Tab <strong>Cài đặt</strong> cho phép đổi tên gian hàng (tối đa 15 ký tự), chọn hình thức nhận tiền và trả gian hàng sớm.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIDE BUY -->
+  <div class="section" id="guide-buy">
+    <div class="section-title"><i class="fas fa-cart-shopping"></i>Hướng dẫn: Mua hàng</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Đến ki-ốt bất kỳ</div>
+          <div class="step-desc">Prop ki-ốt hiển thị tên chủ hàng phía trên. Đứng gần và chọn <strong>Xem Gian Hàng</strong> qua ox_target.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Chọn sản phẩm và số lượng</div>
+          <div class="step-desc">Lưới 20 ô hiển thị toàn bộ sản phẩm với ảnh, tên, giá và số lượng còn lại. Nhấn <strong>Mua ngay</strong> để chọn số lượng.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Xác nhận giao dịch</div>
+          <div class="step-desc">Tiền trừ từ túi bank, vật phẩm thêm vào túi đồ. Chủ hàng nhận tiền (trừ % thuế) theo hình thức đã cài đặt.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCALIZATION -->
+  <div class="section" id="localization">
+    <div class="section-title"><i class="fas fa-language"></i>Ngôn ngữ</div>
+    <p class="section-sub">Chuyển ngôn ngữ chỉ cần 1 dòng trong <code>config.lua</code>:</p>
+    <pre><code><span class="c-key">Config.Locale</span> = <span class="c-str">'vi'</span>  <span class="c-cmt">-- Tiếng Việt</span>
+<span class="c-key">Config.Locale</span> = <span class="c-str">'en'</span>  <span class="c-cmt">-- English</span></code></pre>
+    <p style="font-size:.85rem;color:var(--muted);margin-top:12px">Tất cả text bao gồm thông báo, menu ox_lib và toàn bộ NUI đều được dịch. Thêm ngôn ngữ mới bằng cách tạo file <code>locales/xx.lua</code> theo cấu trúc tương tự.</p>
+    <div class="alert alert-tip">
+      <i class="fas fa-lightbulb"></i>
+      <span>Để tạo ngôn ngữ mới: copy <code>locales/en.lua</code>, đổi tên thành <code>locales/xx.lua</code>, dịch các giá trị và đặt <code>Config.Locale = 'xx'</code>.</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>© 2024 <a href="#">S82 Scripts</a> · S82 Kiosk v1.0.0</span>
+    <span>Made with 🌸 for FiveM</span>
+  </div>
+
+</main>
+
+<script>
+const links = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.section, .hero');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
