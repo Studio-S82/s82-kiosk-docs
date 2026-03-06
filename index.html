@@ -3,257 +3,120 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>S82 Kiosk – Tài liệu hướng dẫn</title>
+<title>S82 Kiosk – Docs</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <style>
 :root{
-  --bg:       #0d0810;
-  --bg2:      #130c18;
-  --bg3:      #1c1124;
-  --card:     #18101f;
-  --border:   rgba(212,77,122,0.18);
-  --border2:  rgba(212,77,122,0.38);
-  --pink:     #ff6b9d;
-  --pink2:    #d44d7a;
-  --pink3:    #a3294f;
-  --text:     #f0d6e8;
-  --muted:    #8b5a78;
-  --code-bg:  #0a0610;
-  --gold:     #ffd700;
-  --success:  #56d364;
-  --sidebar-w:260px;
+  --bg:#0d0810;--bg2:#130c18;--bg3:#1c1124;--card:#18101f;
+  --border:rgba(212,77,122,.18);--border2:rgba(212,77,122,.38);
+  --pink:#ff6b9d;--pink2:#d44d7a;--pink3:#a3294f;
+  --text:#f0d6e8;--muted:#8b5a78;--code-bg:#0a0610;
+  --gold:#ffd700;--success:#56d364;--sidebar-w:264px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Sora',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  display:flex;
-  min-height:100vh;
-  font-size:15px;
-  line-height:1.7;
-}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;font-size:15px;line-height:1.7}
 
 /* ── Sidebar ── */
-.sidebar{
-  width:var(--sidebar-w);
-  position:fixed;
-  top:0;left:0;bottom:0;
-  background:var(--bg2);
-  border-right:1px solid var(--border);
-  overflow-y:auto;
-  z-index:100;
-  display:flex;flex-direction:column;
-}
+.sidebar{width:var(--sidebar-w);position:fixed;top:0;left:0;bottom:0;background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;z-index:100;display:flex;flex-direction:column}
 .sidebar::-webkit-scrollbar{width:3px}
 .sidebar::-webkit-scrollbar-thumb{background:var(--pink3);border-radius:2px}
-
-.sidebar-logo{
-  padding:28px 22px 20px;
-  border-bottom:1px solid var(--border);
-}
+.sidebar-logo{padding:26px 22px 18px;border-bottom:1px solid var(--border)}
 .logo-icon{font-size:2rem;filter:drop-shadow(0 0 12px rgba(255,107,157,.5))}
-.logo-name{
-  font-size:1.15rem;font-weight:800;
-  background:linear-gradient(135deg,var(--pink),var(--pink3));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-top:4px;
-}
-.logo-ver{font-size:0.7rem;color:var(--muted);font-weight:500;letter-spacing:.06em}
+.logo-name{font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,var(--pink),var(--pink3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:4px}
+.logo-ver{font-size:.68rem;color:var(--muted);font-weight:500;letter-spacing:.06em;margin-top:2px}
 
-.nav-group{padding:16px 0 4px}
-.nav-group-label{
-  font-size:0.65rem;font-weight:700;
-  text-transform:uppercase;letter-spacing:.12em;
-  color:var(--muted);padding:0 22px 8px;
-}
-.nav-link{
-  display:flex;align-items:center;gap:10px;
-  padding:9px 22px;
-  font-size:0.84rem;font-weight:500;
-  color:var(--muted);
-  text-decoration:none;
-  transition:.15s;border-left:2px solid transparent;
-}
-.nav-link i{width:16px;text-align:center;font-size:.8rem}
+/* Lang switch */
+.lang-switch{display:flex;gap:6px;padding:14px 22px;border-bottom:1px solid var(--border)}
+.lang-btn{flex:1;padding:7px 0;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.78rem;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;transition:.15s;display:flex;align-items:center;justify-content:center;gap:5px}
+.lang-btn:hover{border-color:var(--border2);color:var(--text)}
+.lang-btn.active{background:linear-gradient(135deg,var(--pink3),var(--pink2));border-color:transparent;color:#fff}
+
+.nav-group{padding:14px 0 4px}
+.nav-group-label{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:0 22px 8px}
+.nav-link{display:flex;align-items:center;gap:10px;padding:8px 22px;font-size:.83rem;font-weight:500;color:var(--muted);text-decoration:none;transition:.15s;border-left:2px solid transparent}
+.nav-link i{width:16px;text-align:center;font-size:.78rem}
 .nav-link:hover{color:var(--text);background:rgba(255,107,157,.05)}
 .nav-link.active{color:var(--pink);border-left-color:var(--pink);background:rgba(255,107,157,.07)}
 
 /* ── Main ── */
-.main{
-  margin-left:var(--sidebar-w);
-  flex:1;
-  max-width:900px;
-  padding:0 48px 80px;
-}
+.main{margin-left:var(--sidebar-w);flex:1;max-width:900px;padding:0 52px 80px}
 
 /* ── Hero ── */
-.hero{
-  padding:64px 0 48px;
-  border-bottom:1px solid var(--border);
-  margin-bottom:56px;
-  position:relative;
-  overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;top:-80px;right:-80px;
-  width:400px;height:400px;
-  background:radial-gradient(circle,rgba(212,77,122,.12),transparent 65%);
-  border-radius:50%;pointer-events:none;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(212,77,122,.1);border:1px solid var(--border2);
-  border-radius:999px;padding:5px 14px;
-  font-size:.72rem;font-weight:700;color:var(--pink);
-  letter-spacing:.05em;text-transform:uppercase;
-  margin-bottom:18px;
-}
-.hero h1{
-  font-size:3rem;font-weight:800;line-height:1.1;
-  background:linear-gradient(135deg,#fff 30%,var(--pink) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:16px;
-}
-.hero-desc{font-size:1.05rem;color:var(--muted);max-width:580px;line-height:1.7}
+.hero{padding:64px 0 48px;border-bottom:1px solid var(--border);margin-bottom:56px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(212,77,122,.12),transparent 65%);border-radius:50%;pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(212,77,122,.1);border:1px solid var(--border2);border-radius:999px;padding:5px 14px;font-size:.7rem;font-weight:700;color:var(--pink);letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:2.9rem;font-weight:800;line-height:1.1;background:linear-gradient(135deg,#fff 30%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:14px}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:580px;line-height:1.7}
 .hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.tag{
-  display:inline-flex;align-items:center;gap:6px;
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:8px;padding:6px 13px;
-  font-size:.78rem;font-weight:600;color:var(--text);
-}
-.tag i{color:var(--pink);font-size:.75rem}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.76rem;font-weight:600;color:var(--text)}
+.tag i{color:var(--pink);font-size:.72rem}
 
 /* ── Sections ── */
 .section{margin-bottom:56px;scroll-margin-top:24px}
-.section-title{
-  font-size:1.45rem;font-weight:800;
-  color:#fff;margin-bottom:6px;
-  display:flex;align-items:center;gap:12px;
-}
-.section-title i{
-  width:36px;height:36px;border-radius:10px;
-  background:linear-gradient(135deg,var(--pink3),var(--pink2));
-  display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;color:#fff;flex-shrink:0;
-}
-.section-sub{color:var(--muted);margin-bottom:24px;font-size:.9rem}
+.section-title{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:12px}
+.section-title .icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--pink3),var(--pink2));display:flex;align-items:center;justify-content:center;font-size:.88rem;color:#fff;flex-shrink:0}
+.section-sub{color:var(--muted);margin-bottom:22px;font-size:.88rem}
 .divider{height:1px;background:var(--border);margin:48px 0}
 
 /* ── Cards ── */
 .card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .card-grid.triple{grid-template-columns:repeat(3,1fr)}
-.feature-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:16px;padding:22px;
-  transition:.2s;position:relative;overflow:hidden;
-}
-.feature-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--pink3),var(--pink));
-}
+.feature-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.2s;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink3),var(--pink))}
 .feature-card:hover{border-color:var(--border2);transform:translateY(-2px)}
-.fc-icon{
-  width:40px;height:40px;border-radius:10px;margin-bottom:14px;
-  background:rgba(255,107,157,.1);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;color:var(--pink);
-}
-.fc-title{font-weight:700;font-size:.95rem;margin-bottom:6px;color:#fff}
-.fc-desc{font-size:.82rem;color:var(--muted);line-height:1.55}
+.fc-icon{width:40px;height:40px;border-radius:10px;margin-bottom:14px;background:rgba(255,107,157,.1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--pink)}
+.fc-title{font-weight:700;font-size:.93rem;margin-bottom:6px;color:#fff}
+.fc-desc{font-size:.81rem;color:var(--muted);line-height:1.55}
 
 /* ── Steps ── */
 .steps{display:flex;flex-direction:column;gap:0}
 .step{display:flex;gap:20px;position:relative}
-.step+.step::before{
-  content:'';position:absolute;left:19px;top:-20px;
-  width:1px;height:20px;background:var(--border);
-}
-.step-num{
-  width:38px;height:38px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--pink3),var(--pink2));
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:.85rem;color:#fff;
-  box-shadow:0 0 14px rgba(212,77,122,.3);
-}
+.step+.step::before{content:'';position:absolute;left:19px;top:-20px;width:1px;height:20px;background:var(--border)}
+.step-num{width:38px;height:38px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--pink3),var(--pink2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.83rem;color:#fff;box-shadow:0 0 14px rgba(212,77,122,.3)}
 .step-body{padding-bottom:28px;flex:1}
-.step-title{font-weight:700;font-size:.98rem;margin-bottom:6px;color:#fff}
-.step-desc{font-size:.85rem;color:var(--muted);line-height:1.6}
+.step-title{font-weight:700;font-size:.95rem;margin-bottom:6px;color:#fff}
+.step-desc{font-size:.84rem;color:var(--muted);line-height:1.6}
 
-/* ── Code blocks ── */
-pre{
-  background:var(--code-bg);border:1px solid var(--border);
-  border-radius:12px;padding:20px;
-  font-family:'JetBrains Mono',monospace;
-  font-size:.8rem;line-height:1.7;
-  overflow-x:auto;
-  margin:14px 0;
-  color:#e0c8d8;
-}
-code{
-  font-family:'JetBrains Mono',monospace;
-  background:rgba(255,107,157,.1);
-  border:1px solid rgba(255,107,157,.2);
-  border-radius:5px;padding:2px 7px;
-  font-size:.82rem;color:var(--pink);
-}
+/* ── Code ── */
+pre{background:var(--code-bg);border:1px solid var(--border);border-radius:12px;padding:20px;font-family:'JetBrains Mono',monospace;font-size:.79rem;line-height:1.75;overflow-x:auto;margin:14px 0;color:#e0c8d8}
+code{font-family:'JetBrains Mono',monospace;background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.2);border-radius:5px;padding:2px 7px;font-size:.8rem;color:var(--pink)}
 pre code{background:none;border:none;padding:0;color:inherit;font-size:inherit}
-.c-key{color:#ff9abb}
-.c-val{color:#88d4a8}
-.c-str{color:#ffd788}
-.c-cmt{color:#5a3d50;font-style:italic}
+.ck{color:#ff9abb}.cv{color:#88d4a8}.cs{color:#ffd788}.cc{color:#5a3d50;font-style:italic}
 
 /* ── Tables ── */
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.85rem}
-th{
-  background:var(--bg3);color:var(--muted);
-  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
-  padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);
-}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.84rem}
+th{background:var(--bg3);color:var(--muted);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
 td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(255,107,157,.03)}
-td code{font-size:.78rem}
+td code{font-size:.76rem}
 
-/* ── Alert boxes ── */
-.alert{
-  display:flex;gap:14px;align-items:flex-start;
-  border-radius:12px;padding:16px 18px;margin:14px 0;
-  border:1px solid;font-size:.85rem;line-height:1.6;
-}
-.alert i{font-size:1rem;margin-top:2px;flex-shrink:0}
-.alert-info{ background:rgba(88,166,255,.07);  border-color:rgba(88,166,255,.25); color:#8bc4ff}
+/* ── Alerts ── */
+.alert{display:flex;gap:14px;align-items:flex-start;border-radius:12px;padding:15px 18px;margin:14px 0;border:1px solid;font-size:.84rem;line-height:1.6}
+.alert i{font-size:.95rem;margin-top:2px;flex-shrink:0}
+.alert-info{background:rgba(88,166,255,.07);border-color:rgba(88,166,255,.25);color:#8bc4ff}
 .alert-info i{color:#58a6ff}
-.alert-warn{ background:rgba(255,215,0,.07);   border-color:rgba(255,215,0,.25);  color:#ffd700}
+.alert-warn{background:rgba(255,215,0,.07);border-color:rgba(255,215,0,.25);color:#ffd700}
 .alert-warn i{color:var(--gold)}
-.alert-tip{  background:rgba(86,211,100,.07);  border-color:rgba(86,211,100,.25); color:#56d364}
+.alert-tip{background:rgba(86,211,100,.07);border-color:rgba(86,211,100,.25);color:#56d364}
 .alert-tip i{color:var(--success)}
 
-/* ── Config option rows ── */
-.config-block{display:flex;flex-direction:column;gap:3px;margin:10px 0}
-
 /* ── Footer ── */
-.footer{
-  border-top:1px solid var(--border);
-  padding:32px 0 0;margin-top:64px;
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.78rem;color:var(--muted);
-}
+.footer{border-top:1px solid var(--border);padding:28px 0 0;margin-top:56px;display:flex;justify-content:space-between;align-items:center;font-size:.77rem;color:var(--muted)}
 .footer a{color:var(--pink);text-decoration:none}
 
-/* ── Scrollspy active highlight ── */
 @media(max-width:900px){
   .sidebar{display:none}
-  .main{margin-left:0;padding:0 24px 60px}
+  .main{margin-left:0;padding:0 20px 60px}
+  .card-grid,.card-grid.triple{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<!-- ═══════════ SIDEBAR ═══════════ -->
 <aside class="sidebar">
   <div class="sidebar-logo">
     <div class="logo-icon">🌸</div>
@@ -261,45 +124,52 @@ td code{font-size:.78rem}
     <div class="logo-ver">v1.0.0 · FiveM Script</div>
   </div>
 
+  <div class="lang-switch">
+    <button class="lang-btn active" id="btn-vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+
   <nav>
     <div class="nav-group">
-      <div class="nav-group-label">Bắt đầu</div>
-      <a class="nav-link active" href="#intro"><i class="fas fa-rocket"></i>Giới thiệu</a>
-      <a class="nav-link" href="#requirements"><i class="fas fa-list-check"></i>Yêu cầu</a>
-      <a class="nav-link" href="#install"><i class="fas fa-download"></i>Cài đặt</a>
+      <div class="nav-group-label" data-vi="Bắt đầu" data-en="Getting Started">Bắt đầu</div>
+      <a class="nav-link active" href="#intro"><i class="fas fa-rocket"></i><span data-vi="Giới thiệu" data-en="Introduction">Giới thiệu</span></a>
+      <a class="nav-link" href="#requirements"><i class="fas fa-list-check"></i><span data-vi="Yêu cầu" data-en="Requirements">Yêu cầu</span></a>
+      <a class="nav-link" href="#install"><i class="fas fa-download"></i><span data-vi="Cài đặt" data-en="Installation">Cài đặt</span></a>
     </div>
     <div class="nav-group">
-      <div class="nav-group-label">Cấu hình</div>
-      <a class="nav-link" href="#config-basic"><i class="fas fa-sliders"></i>Cơ bản</a>
-      <a class="nav-link" href="#config-ui"><i class="fas fa-palette"></i>Giao diện</a>
-      <a class="nav-link" href="#config-stalls"><i class="fas fa-map-pin"></i>Vị trí gian hàng</a>
-      <a class="nav-link" href="#config-payment"><i class="fas fa-wallet"></i>Thanh toán</a>
+      <div class="nav-group-label" data-vi="Cấu hình" data-en="Configuration">Cấu hình</div>
+      <a class="nav-link" href="#config-basic"><i class="fas fa-sliders"></i><span data-vi="Cơ bản" data-en="Basic">Cơ bản</span></a>
+      <a class="nav-link" href="#config-ui"><i class="fas fa-palette"></i><span data-vi="Giao diện" data-en="UI / Theme">Giao diện</span></a>
+      <a class="nav-link" href="#config-stalls"><i class="fas fa-map-pin"></i><span data-vi="Vị trí gian hàng" data-en="Stall Locations">Vị trí gian hàng</span></a>
+      <a class="nav-link" href="#config-payment"><i class="fas fa-wallet"></i><span data-vi="Thanh toán" data-en="Payment">Thanh toán</span></a>
     </div>
     <div class="nav-group">
-      <div class="nav-group-label">Tính năng</div>
-      <a class="nav-link" href="#features"><i class="fas fa-star"></i>Tổng quan</a>
-      <a class="nav-link" href="#inventory"><i class="fas fa-boxes-stacked"></i>Multi-Inventory</a>
-      <a class="nav-link" href="#payment-detail"><i class="fas fa-coins"></i>Loại thanh toán</a>
+      <div class="nav-group-label" data-vi="Tính năng" data-en="Features">Tính năng</div>
+      <a class="nav-link" href="#features"><i class="fas fa-star"></i><span data-vi="Tổng quan" data-en="Overview">Tổng quan</span></a>
+      <a class="nav-link" href="#inventory"><i class="fas fa-boxes-stacked"></i><span data-vi="Multi-Inventory" data-en="Multi-Inventory">Multi-Inventory</span></a>
+      <a class="nav-link" href="#payment-detail"><i class="fas fa-coins"></i><span data-vi="Loại thanh toán" data-en="Payment Types">Loại thanh toán</span></a>
       <a class="nav-link" href="#admin"><i class="fas fa-shield"></i>Admin</a>
     </div>
     <div class="nav-group">
-      <div class="nav-group-label">Hướng dẫn</div>
-      <a class="nav-link" href="#guide-rent"><i class="fas fa-store"></i>Thuê gian hàng</a>
-      <a class="nav-link" href="#guide-sell"><i class="fas fa-tag"></i>Đăng bán</a>
-      <a class="nav-link" href="#guide-buy"><i class="fas fa-cart-shopping"></i>Mua hàng</a>
-      <a class="nav-link" href="#localization"><i class="fas fa-language"></i>Ngôn ngữ</a>
+      <div class="nav-group-label" data-vi="Hướng dẫn" data-en="Guides">Hướng dẫn</div>
+      <a class="nav-link" href="#guide-rent"><i class="fas fa-store"></i><span data-vi="Thuê gian hàng" data-en="Renting a Stall">Thuê gian hàng</span></a>
+      <a class="nav-link" href="#guide-sell"><i class="fas fa-tag"></i><span data-vi="Đăng bán" data-en="Selling Items">Đăng bán</span></a>
+      <a class="nav-link" href="#guide-buy"><i class="fas fa-cart-shopping"></i><span data-vi="Mua hàng" data-en="Buying Items">Mua hàng</span></a>
+      <a class="nav-link" href="#localization"><i class="fas fa-language"></i><span data-vi="Ngôn ngữ" data-en="Localization">Ngôn ngữ</span></a>
     </div>
   </nav>
 </aside>
 
-<!-- ═══════════════ MAIN ═══════════════ -->
+<!-- ═══════════ MAIN ═══════════ -->
 <main class="main">
 
   <!-- HERO -->
   <div class="hero" id="intro">
     <div class="hero-badge"><i class="fas fa-store"></i> FiveM Script</div>
     <h1>S82 Kiosk</h1>
-    <p class="hero-desc">Hệ thống chợ gian hàng cho người chơi. Cho phép thuê ki-ốt, đăng bán vật phẩm, quản lý giá và nhận tiền ngay trong game với giao diện NUI đẹp mắt.</p>
+    <p class="hero-desc" data-vi="Hệ thống chợ gian hàng cho người chơi. Cho phép thuê ki-ốt, đăng bán vật phẩm, quản lý giá và nhận tiền ngay trong game với giao diện NUI đẹp mắt." data-en="A player-to-player market system for FiveM. Rent kiosks, list items for sale, manage prices and collect earnings — all with a polished NUI interface.">
+      Hệ thống chợ gian hàng cho người chơi. Cho phép thuê ki-ốt, đăng bán vật phẩm, quản lý giá và nhận tiền ngay trong game với giao diện NUI đẹp mắt.
+    </p>
     <div class="hero-tags">
       <span class="tag"><i class="fas fa-code-branch"></i>ESX / QB / QBX</span>
       <span class="tag"><i class="fas fa-boxes-stacked"></i>Multi-Inventory</span>
@@ -312,21 +182,34 @@ td code{font-size:.78rem}
 
   <!-- REQUIREMENTS -->
   <div class="section" id="requirements">
-    <div class="section-title"><i class="fas fa-list-check"></i>Yêu cầu</div>
-    <p class="section-sub">Script yêu cầu các dependency sau đây đã được cài đặt và khởi động trước.</p>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-list-check"></i></span>
+      <span data-vi="Yêu cầu" data-en="Requirements">Yêu cầu</span>
+    </div>
+    <p class="section-sub" data-vi="Script yêu cầu các dependency sau đây đã được cài đặt và khởi động trước." data-en="The following dependencies must be installed and started before s82_kiosk.">
+      Script yêu cầu các dependency sau đây đã được cài đặt và khởi động trước.
+    </p>
     <table>
-      <thead><tr><th>Dependency</th><th>Phiên bản tối thiểu</th><th>Bắt buộc</th></tr></thead>
+      <thead>
+        <tr>
+          <th>Dependency</th>
+          <th data-vi="Phiên bản tối thiểu" data-en="Min Version">Phiên bản tối thiểu</th>
+          <th data-vi="Bắt buộc" data-en="Required">Bắt buộc</th>
+        </tr>
+      </thead>
       <tbody>
-        <tr><td><code>ox_lib</code></td><td>3.x+</td><td><span style="color:var(--pink)">✔ Bắt buộc</span></td></tr>
-        <tr><td><code>ox_target</code></td><td>3.x+</td><td><span style="color:var(--pink)">✔ Bắt buộc</span></td></tr>
-        <tr><td><code>oxmysql</code></td><td>2.x+</td><td><span style="color:var(--pink)">✔ Bắt buộc</span></td></tr>
-        <tr><td><code>ox_inventory</code></td><td>Bất kỳ</td><td>Mặc định (auto-detect)</td></tr>
-        <tr><td><code>qb-inventory / ps-inventory / qs-inventory</code></td><td>Bất kỳ</td><td>Tuỳ chọn thay thế</td></tr>
+        <tr><td><code>ox_lib</code></td><td>3.x+</td><td><span style="color:var(--pink)" data-vi="✔ Bắt buộc" data-en="✔ Required">✔ Bắt buộc</span></td></tr>
+        <tr><td><code>ox_target</code></td><td>3.x+</td><td><span style="color:var(--pink)" data-vi="✔ Bắt buộc" data-en="✔ Required">✔ Bắt buộc</span></td></tr>
+        <tr><td><code>oxmysql</code></td><td>2.x+</td><td><span style="color:var(--pink)" data-vi="✔ Bắt buộc" data-en="✔ Required">✔ Bắt buộc</span></td></tr>
+        <tr><td><code>ox_inventory</code></td><td data-vi="Bất kỳ" data-en="Any">Bất kỳ</td><td data-vi="Mặc định (auto-detect)" data-en="Default (auto-detect)">Mặc định (auto-detect)</td></tr>
+        <tr><td><code>qb-inventory / ps-inventory / qs-inventory</code></td><td data-vi="Bất kỳ" data-en="Any">Bất kỳ</td><td data-vi="Tuỳ chọn thay thế" data-en="Optional alternative">Tuỳ chọn thay thế</td></tr>
       </tbody>
     </table>
     <div class="alert alert-info">
       <i class="fas fa-circle-info"></i>
-      <span>Script tự động nhận biết framework (<code>ESX</code>, <code>QB</code>, <code>QBX</code>) và inventory đang dùng. Không cần cấu hình thủ công nếu bạn để <code>auto</code>.</span>
+      <span data-vi="Script tự động nhận biết framework (ESX, QB, QBX) và inventory đang dùng. Không cần cấu hình thủ công nếu bạn để <code>auto</code>." data-en="The script auto-detects your framework (ESX, QB, QBX) and active inventory. No manual config needed when set to <code>auto</code>.">
+        Script tự động nhận biết framework (ESX, QB, QBX) và inventory đang dùng. Không cần cấu hình thủ công nếu bạn để <code>auto</code>.
+      </span>
     </div>
   </div>
 
@@ -334,48 +217,64 @@ td code{font-size:.78rem}
 
   <!-- INSTALL -->
   <div class="section" id="install">
-    <div class="section-title"><i class="fas fa-download"></i>Cài đặt</div>
-    <p class="section-sub">Làm theo từng bước sau để cài đặt S82 Kiosk lên server.</p>
-
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-download"></i></span>
+      <span data-vi="Cài đặt" data-en="Installation">Cài đặt</span>
+    </div>
+    <p class="section-sub" data-vi="Làm theo từng bước sau để cài đặt S82 Kiosk lên server." data-en="Follow these steps to install S82 Kiosk on your server.">
+      Làm theo từng bước sau để cài đặt S82 Kiosk lên server.
+    </p>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <div class="step-title">Giải nén vào thư mục resources</div>
-          <div class="step-desc">Đặt thư mục <code>s82_kiosk</code> vào <code>[resources]/[s82]/ </code>hoặc bất kỳ thư mục nào trên server.</div>
+          <div class="step-title" data-vi="Giải nén vào thư mục resources" data-en="Extract to resources folder">Giải nén vào thư mục resources</div>
+          <div class="step-desc" data-vi="Đặt thư mục s82_kiosk vào [resources]/[s82]/ hoặc bất kỳ thư mục nào trên server." data-en="Place the s82_kiosk folder inside [resources]/[s82]/ or any sub-folder on your server.">
+            Đặt thư mục <code>s82_kiosk</code> vào <code>[resources]/[s82]/</code> hoặc bất kỳ thư mục nào trên server.
+          </div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <div class="step-title">Thêm vào server.cfg</div>
-          <pre><code><span class="c-key">ensure</span> <span class="c-val">s82_kiosk</span></code></pre>
-          <div class="step-desc">Đảm bảo các dependency được ensure <strong>trước</strong> s82_kiosk.</div>
+          <div class="step-title" data-vi="Thêm vào server.cfg" data-en="Add to server.cfg">Thêm vào server.cfg</div>
+          <pre><code><span class="ck">ensure</span> <span class="cv">s82_kiosk</span></code></pre>
+          <div class="step-desc" data-vi="Đảm bảo các dependency được ensure trước s82_kiosk." data-en="Make sure all dependencies are ensured before s82_kiosk.">
+            Đảm bảo các dependency được ensure <strong>trước</strong> s82_kiosk.
+          </div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <div class="step-title">Database tự động tạo</div>
-          <div class="step-desc">Khi resource khởi động lần đầu, SQL sẽ tự động tạo bảng <code>s82_stalls</code> và <code>s82_transactions</code>. Không cần import thủ công.</div>
+          <div class="step-title" data-vi="Database tự động tạo" data-en="Database auto-created">Database tự động tạo</div>
+          <div class="step-desc" data-vi="Khi resource khởi động lần đầu, SQL sẽ tự động tạo bảng s82_stalls và s82_transactions. Không cần import thủ công." data-en="On first start, the script automatically creates the s82_stalls and s82_transactions tables. No manual import needed.">
+            Khi resource khởi động lần đầu, SQL sẽ tự động tạo bảng <code>s82_stalls</code> và <code>s82_transactions</code>.
+          </div>
           <div class="alert alert-warn" style="margin-top:10px">
             <i class="fas fa-triangle-exclamation"></i>
-            <span>Nếu auto-install thất bại (lỗi quyền MySQL), hãy chạy file <code>s82_kiosk.sql</code> thủ công qua phpMyAdmin hoặc HeidiSQL.</span>
+            <span data-vi="Nếu auto-install thất bại (lỗi quyền MySQL), hãy chạy file s82_kiosk.sql thủ công qua phpMyAdmin hoặc HeidiSQL." data-en="If auto-install fails (MySQL permission error), run s82_kiosk.sql manually via phpMyAdmin or HeidiSQL.">
+              Nếu auto-install thất bại, hãy chạy file <code>s82_kiosk.sql</code> thủ công qua phpMyAdmin hoặc HeidiSQL.
+            </span>
           </div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <div class="step-title">Cấu hình config.lua</div>
-          <div class="step-desc">Mở <code>config.lua</code> và điều chỉnh các thông số theo server của bạn. Xem chi tiết ở phần Cấu hình bên dưới.</div>
+          <div class="step-title" data-vi="Cấu hình config.lua" data-en="Configure config.lua">Cấu hình config.lua</div>
+          <div class="step-desc" data-vi="Mở config.lua và điều chỉnh các thông số theo server của bạn." data-en="Open config.lua and adjust the settings to match your server.">
+            Mở <code>config.lua</code> và điều chỉnh các thông số theo server của bạn.
+          </div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">5</div>
         <div class="step-body">
-          <div class="step-title">Khởi động lại server</div>
-          <div class="step-desc">Restart server hoặc dùng <code>refresh</code> + <code>ensure s82_kiosk</code> trong console.</div>
+          <div class="step-title" data-vi="Khởi động lại server" data-en="Restart your server">Khởi động lại server</div>
+          <div class="step-desc" data-vi="Restart server hoặc dùng lệnh refresh + ensure s82_kiosk trong console." data-en="Restart the server or use refresh + ensure s82_kiosk in the server console.">
+            Restart server hoặc dùng <code>refresh</code> + <code>ensure s82_kiosk</code> trong console.
+          </div>
         </div>
       </div>
     </div>
@@ -385,83 +284,109 @@ td code{font-size:.78rem}
 
   <!-- CONFIG BASIC -->
   <div class="section" id="config-basic">
-    <div class="section-title"><i class="fas fa-sliders"></i>Cấu hình cơ bản</div>
-    <p class="section-sub">Các thông số chính trong <code>config.lua</code>.</p>
-
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-sliders"></i></span>
+      <span data-vi="Cấu hình cơ bản" data-en="Basic Configuration">Cấu hình cơ bản</span>
+    </div>
+    <p class="section-sub" data-vi="Các thông số chính trong config.lua." data-en="Main settings inside config.lua.">Các thông số chính trong <code>config.lua</code>.</p>
     <table>
-      <thead><tr><th>Tham số</th><th>Mặc định</th><th>Mô tả</th></tr></thead>
+      <thead>
+        <tr>
+          <th data-vi="Tham số" data-en="Parameter">Tham số</th>
+          <th data-vi="Mặc định" data-en="Default">Mặc định</th>
+          <th data-vi="Mô tả" data-en="Description">Mô tả</th>
+        </tr>
+      </thead>
       <tbody>
-        <tr><td><code>Config.Framework</code></td><td><code>'auto'</code></td><td>Framework: <code>'auto'</code>, <code>'ESX'</code>, <code>'QB'</code>, <code>'QBX'</code></td></tr>
-        <tr><td><code>Config.InventoryType</code></td><td><code>'auto'</code></td><td>Inventory: <code>'auto'</code>, <code>'ox_inventory'</code>, <code>'qb-inventory'</code>, <code>'ps-inventory'</code>, <code>'qs-inventory'</code></td></tr>
-        <tr><td><code>Config.Locale</code></td><td><code>'vi'</code></td><td>Ngôn ngữ: <code>'vi'</code> (Tiếng Việt) hoặc <code>'en'</code> (English)</td></tr>
-        <tr><td><code>Config.TaxPercent</code></td><td><code>5</code></td><td>Thuế mỗi giao dịch (%)</td></tr>
-        <tr><td><code>Config.MinPrice</code></td><td><code>1</code></td><td>Giá bán tối thiểu ($)</td></tr>
-        <tr><td><code>Config.MaxPrice</code></td><td><code>1000000</code></td><td>Giá bán tối đa ($)</td></tr>
-        <tr><td><code>Config.StallSlots</code></td><td><code>25</code></td><td>Số ô tối đa mỗi gian hàng</td></tr>
-        <tr><td><code>Config.StallProp</code></td><td><code>'prop_pier_kiosk_03'</code></td><td>Tên prop ki-ốt hiển thị trong game</td></tr>
-        <tr><td><code>Config.MaxStallNameLength</code></td><td><code>15</code></td><td>Độ dài tối đa tên gian hàng</td></tr>
-        <tr><td><code>Config.MaxDistance</code></td><td><code>2.5</code></td><td>Khoảng cách tối đa để tương tác (m)</td></tr>
-        <tr><td><code>Config.BuyCooldown</code></td><td><code>500</code></td><td>Thời gian chờ giữa các lần mua (ms)</td></tr>
+        <tr><td><code>Config.Framework</code></td><td><code>'auto'</code></td><td data-vi="auto, ESX, QB, QBX" data-en="auto, ESX, QB, QBX">auto, ESX, QB, QBX</td></tr>
+        <tr><td><code>Config.InventoryType</code></td><td><code>'auto'</code></td><td data-vi="auto, ox_inventory, qb-inventory, ps-inventory, qs-inventory" data-en="auto, ox_inventory, qb-inventory, ps-inventory, qs-inventory">auto / ox_inventory / qb-inventory / ps-inventory / qs-inventory</td></tr>
+        <tr><td><code>Config.Locale</code></td><td><code>'vi'</code></td><td data-vi="Ngôn ngữ: vi (Tiếng Việt) hoặc en (English)" data-en="Language: vi (Vietnamese) or en (English)">Ngôn ngữ: <code>vi</code> hoặc <code>en</code></td></tr>
+        <tr><td><code>Config.TaxPercent</code></td><td><code>5</code></td><td data-vi="Thuế mỗi giao dịch (%)" data-en="Tax per transaction (%)">Thuế mỗi giao dịch (%)</td></tr>
+        <tr><td><code>Config.MinPrice</code></td><td><code>1</code></td><td data-vi="Giá bán tối thiểu" data-en="Minimum sell price">Giá bán tối thiểu</td></tr>
+        <tr><td><code>Config.MaxPrice</code></td><td><code>1000000</code></td><td data-vi="Giá bán tối đa" data-en="Maximum sell price">Giá bán tối đa</td></tr>
+        <tr><td><code>Config.StallSlots</code></td><td><code>25</code></td><td data-vi="Số ô tối đa mỗi gian hàng" data-en="Max item slots per stall">Số ô tối đa mỗi gian hàng</td></tr>
+        <tr><td><code>Config.StallProp</code></td><td><code>'prop_pier_kiosk_03'</code></td><td data-vi="Prop model của ki-ốt" data-en="Kiosk prop model name">Prop model của ki-ốt</td></tr>
+        <tr><td><code>Config.MaxDistance</code></td><td><code>2.5</code></td><td data-vi="Khoảng cách tối đa để tương tác (m)" data-en="Max interaction distance (meters)">Khoảng cách tối đa để tương tác (m)</td></tr>
+        <tr><td><code>Config.BuyCooldown</code></td><td><code>500</code></td><td data-vi="Thời gian chờ giữa các lần mua (ms)" data-en="Cooldown between purchases (ms)">Thời gian chờ giữa các lần mua (ms)</td></tr>
       </tbody>
     </table>
-
-    <pre><code><span class="c-cmt">-- Tùy chọn thuê gian hàng</span>
-<span class="c-key">Config.RentOptions</span> = {
-    { <span class="c-str">days</span> = <span class="c-val">1</span>, <span class="c-str">price</span> = <span class="c-val">2000</span>,  <span class="c-str">deposit</span> = <span class="c-val">5000</span> },
-    { <span class="c-str">days</span> = <span class="c-val">3</span>, <span class="c-str">price</span> = <span class="c-val">5000</span>,  <span class="c-str">deposit</span> = <span class="c-val">5000</span> },
-    { <span class="c-str">days</span> = <span class="c-val">7</span>, <span class="c-str">price</span> = <span class="c-val">9000</span>,  <span class="c-str">deposit</span> = <span class="c-val">5000</span> },
+    <pre><code><span class="cc">-- Tùy chọn thuê / Rent options</span>
+<span class="ck">Config.RentOptions</span> = {
+    { <span class="cs">days</span> = <span class="cv">1</span>, <span class="cs">price</span> = <span class="cv">2000</span>,  <span class="cs">deposit</span> = <span class="cv">5000</span> },
+    { <span class="cs">days</span> = <span class="cv">3</span>, <span class="cs">price</span> = <span class="cv">5000</span>,  <span class="cs">deposit</span> = <span class="cv">5000</span> },
+    { <span class="cs">days</span> = <span class="cv">7</span>, <span class="cs">price</span> = <span class="cv">9000</span>,  <span class="cs">deposit</span> = <span class="cv">5000</span> },
 }</code></pre>
   </div>
 
   <!-- CONFIG UI -->
   <div class="section" id="config-ui">
-    <div class="section-title"><i class="fas fa-palette"></i>Cấu hình giao diện</div>
-    <p class="section-sub">Tuỳ chỉnh giao diện NUI trong <code>Config.UI</code>.</p>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-palette"></i></span>
+      <span data-vi="Cấu hình giao diện" data-en="UI Configuration">Cấu hình giao diện</span>
+    </div>
+    <p class="section-sub" data-vi="Tuỳ chỉnh giao diện NUI trong Config.UI." data-en="Customize the NUI appearance inside Config.UI.">Tuỳ chỉnh giao diện NUI trong <code>Config.UI</code>.</p>
     <table>
-      <thead><tr><th>Tham số</th><th>Mô tả</th></tr></thead>
+      <thead><tr><th data-vi="Tham số" data-en="Parameter">Tham số</th><th data-vi="Mô tả" data-en="Description">Mô tả</th></tr></thead>
       <tbody>
-        <tr><td><code>LogoURL</code></td><td>URL ảnh logo máy chủ hiển thị góc trái header. Để <code>''</code> để ẩn.</td></tr>
-        <tr><td><code>ItemImageURL</code></td><td>Template URL ảnh item. Dùng <code>{name}</code> làm placeholder tên item. Ví dụ: <code>nui://ox_inventory/web/images/{name}.png</code></td></tr>
-        <tr><td><code>ClickSound</code></td><td>Đường dẫn file âm thanh click (đặt vào <code>html/sounds/</code>)</td></tr>
-        <tr><td><code>ClickVolume</code></td><td>Âm lượng click (0.0 – 1.0)</td></tr>
-        <tr><td><code>PetalEnabled</code></td><td><code>true</code> / <code>false</code> – hiệu ứng hoa anh đào rơi trong UI</td></tr>
-        <tr><td><code>PetalCount</code></td><td>Số cánh hoa anh đào (khuyến nghị 12–20)</td></tr>
+        <tr><td><code>LogoURL</code></td><td data-vi="URL ảnh logo máy chủ hiển thị góc trái header. Để '' để ẩn." data-en="Server logo URL shown in the header. Leave '' to hide.">URL ảnh logo máy chủ. Để <code>''</code> để ẩn.</td></tr>
+        <tr><td><code>ItemImageURL</code></td><td data-vi="Template URL ảnh item. Dùng {name} làm placeholder." data-en="Item image URL template. Use {name} as a placeholder.">Template URL ảnh item. Dùng <code>{name}</code> làm placeholder.</td></tr>
+        <tr><td><code>ClickSound</code></td><td data-vi="Đường dẫn file âm thanh click (html/sounds/)" data-en="Path to click sound file (html/sounds/)">Đường dẫn file âm thanh click</td></tr>
+        <tr><td><code>ClickVolume</code></td><td data-vi="Âm lượng click (0.0 – 1.0)" data-en="Click volume (0.0 – 1.0)">Âm lượng click (0.0 – 1.0)</td></tr>
+        <tr><td><code>PetalEnabled</code></td><td data-vi="true/false – hiệu ứng hoa anh đào rơi" data-en="true/false – cherry blossom petal animation">true/false – hiệu ứng hoa anh đào</td></tr>
+        <tr><td><code>PetalCount</code></td><td data-vi="Số cánh hoa (khuyến nghị 12–20)" data-en="Number of petals (recommended 12–20)">Số cánh hoa (12–20)</td></tr>
       </tbody>
     </table>
     <div class="alert alert-tip">
       <i class="fas fa-lightbulb"></i>
-      <span>Đặt file <code>click.ogg</code> của bạn vào <code>s82_kiosk/html/sounds/click.ogg</code> để tùy chỉnh âm thanh click.</span>
+      <span data-vi="Đặt file click.ogg vào s82_kiosk/html/sounds/click.ogg để thay âm thanh click." data-en="Place your click.ogg file at s82_kiosk/html/sounds/click.ogg to customize the click sound.">
+        Đặt file <code>click.ogg</code> vào <code>s82_kiosk/html/sounds/click.ogg</code> để thay âm thanh click.
+      </span>
     </div>
   </div>
 
   <!-- CONFIG STALLS -->
   <div class="section" id="config-stalls">
-    <div class="section-title"><i class="fas fa-map-pin"></i>Cấu hình vị trí gian hàng</div>
-    <p class="section-sub">Thêm/bớt vị trí ki-ốt trong <code>Config.Stalls</code>. Mỗi entry là 1 vị trí có thể thuê.</p>
-    <pre><code><span class="c-key">Config.Stalls</span> = {
-    { <span class="c-str">coords</span> = <span class="c-val">vector4</span>(-400.81, 6057.04, 30.52,  48.00), <span class="c-str">name</span> = <span class="c-str">'Gian hàng số 1'</span> },
-    { <span class="c-str">coords</span> = <span class="c-val">vector4</span>(-397.30, 6061.08, 30.52,  42.00), <span class="c-str">name</span> = <span class="c-str">'Gian hàng số 2'</span> },
-    <span class="c-cmt">-- Thêm vị trí mới ở đây...</span>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-map-pin"></i></span>
+      <span data-vi="Vị trí gian hàng" data-en="Stall Locations">Vị trí gian hàng</span>
+    </div>
+    <p class="section-sub" data-vi="Thêm/bớt vị trí ki-ốt trong Config.Stalls. Mỗi entry là 1 vị trí có thể thuê." data-en="Add or remove kiosk locations in Config.Stalls. Each entry is one rentable stall slot.">
+      Thêm/bớt vị trí ki-ốt trong <code>Config.Stalls</code>. Mỗi entry là 1 vị trí có thể thuê.
+    </p>
+    <pre><code><span class="ck">Config.Stalls</span> = {
+    { <span class="cs">coords</span> = <span class="cv">vector4</span>(-400.81, 6057.04, 30.52,  48.00), <span class="cs">name</span> = <span class="cs">'Stall #1'</span> },
+    { <span class="cs">coords</span> = <span class="cv">vector4</span>(-397.30, 6061.08, 30.52,  42.00), <span class="cs">name</span> = <span class="cs">'Stall #2'</span> },
+    <span class="cc">-- add more...</span>
 }</code></pre>
-
     <div class="alert alert-info">
       <i class="fas fa-circle-info"></i>
       <div>
-        <strong>Cách tìm toạ độ mới:</strong><br/>
-        Dùng lệnh <code>/marketcreate</code> (yêu cầu quyền admin). Nhân vật sẽ đứng im, prop ghost xuất hiện và bạn điều khiển bằng:<br/><br/>
-        <code>W/S/A/D</code> di chuyển · <code>Q/E</code> xoay · <code>SHIFT</code> di chuyển nhanh · <code>ENTER</code> lưu · <code>ESC</code> huỷ
+        <span data-vi="Cách tìm toạ độ mới: dùng lệnh /marketcreate (quyền admin). Nhân vật đứng im, prop ghost xuất hiện." data-en="To find new coordinates: use /marketcreate (admin only). Your character freezes and a ghost prop appears.">
+          <strong data-vi="Cách tìm toạ độ mới:" data-en="Finding new coordinates:">Cách tìm toạ độ mới:</strong>
+          <span data-vi=" Dùng lệnh /marketcreate (quyền admin)." data-en=" Use /marketcreate (admin only)."> Dùng lệnh <code>/marketcreate</code> (quyền admin).</span>
+        </span><br/><br/>
+        <code>W/S/A/D</code> <span data-vi="di chuyển" data-en="move">di chuyển</span> ·
+        <code>Q/E</code> <span data-vi="xoay" data-en="rotate">xoay</span> ·
+        <code>SHIFT</code> <span data-vi="nhanh hơn" data-en="faster">nhanh hơn</span> ·
+        <code>ENTER</code> <span data-vi="lưu" data-en="save">lưu</span> ·
+        <code>ESC</code> <span data-vi="huỷ" data-en="cancel">huỷ</span>
       </div>
     </div>
   </div>
 
   <!-- CONFIG PAYMENT -->
   <div class="section" id="config-payment">
-    <div class="section-title"><i class="fas fa-wallet"></i>Cấu hình thanh toán</div>
-    <p class="section-sub">Bật/tắt các hình thức nhận tiền trong <code>Config.PaymentTypes</code>.</p>
-    <pre><code><span class="c-key">Config.PaymentTypes</span> = {
-    <span class="c-str">bank</span>        = <span class="c-val">true</span>,   <span class="c-cmt">-- Ngân hàng (chuyển ngay, offline-safe)</span>
-    <span class="c-str">money</span>       = <span class="c-val">true</span>,   <span class="c-cmt">-- Tiền mặt (phải online mới nhận được)</span>
-    <span class="c-str">black_money</span> = <span class="c-val">false</span>,  <span class="c-cmt">-- Tiền bẩn (tắt mặc định)</span>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-wallet"></i></span>
+      <span data-vi="Cấu hình thanh toán" data-en="Payment Configuration">Cấu hình thanh toán</span>
+    </div>
+    <p class="section-sub" data-vi="Bật/tắt các hình thức nhận tiền trong Config.PaymentTypes." data-en="Enable or disable payment methods in Config.PaymentTypes.">
+      Bật/tắt các hình thức nhận tiền trong <code>Config.PaymentTypes</code>.
+    </p>
+    <pre><code><span class="ck">Config.PaymentTypes</span> = {
+    <span class="cs">bank</span>        = <span class="cv">true</span>,   <span class="cc">-- Ngân hàng / Bank</span>
+    <span class="cs">money</span>       = <span class="cv">true</span>,   <span class="cc">-- Tiền mặt / Cash</span>
+    <span class="cs">black_money</span> = <span class="cv">false</span>,  <span class="cc">-- Tiền bẩn / Dirty money</span>
 }</code></pre>
   </div>
 
@@ -469,140 +394,169 @@ td code{font-size:.78rem}
 
   <!-- FEATURES -->
   <div class="section" id="features">
-    <div class="section-title"><i class="fas fa-star"></i>Tính năng nổi bật</div>
-    <p class="section-sub">S82 Kiosk cung cấp một hệ thống chợ player-to-player hoàn chỉnh.</p>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-star"></i></span>
+      <span data-vi="Tính năng nổi bật" data-en="Key Features">Tính năng nổi bật</span>
+    </div>
+    <p class="section-sub" data-vi="S82 Kiosk cung cấp một hệ thống chợ player-to-player hoàn chỉnh." data-en="S82 Kiosk provides a complete player-to-player marketplace system.">
+      S82 Kiosk <span data-vi="cung cấp một hệ thống chợ player-to-player hoàn chỉnh." data-en="provides a complete player-to-player marketplace system.">cung cấp một hệ thống chợ player-to-player hoàn chỉnh.</span>
+    </p>
     <div class="card-grid">
       <div class="feature-card">
         <div class="fc-icon"><i class="fas fa-store"></i></div>
-        <div class="fc-title">Thuê Ki-ốt theo thời hạn</div>
-        <div class="fc-desc">Player thuê gian hàng 1/3/7 ngày. Đặt cọc hoàn trả nếu online khi hết hạn. Phí thuê không hoàn lại.</div>
+        <div class="fc-title" data-vi="Thuê Ki-ốt theo thời hạn" data-en="Timed Kiosk Rental">Thuê Ki-ốt theo thời hạn</div>
+        <div class="fc-desc" data-vi="Player thuê gian hàng 1/3/7 ngày. Đặt cọc hoàn trả nếu online khi hết hạn. Phí thuê không hoàn lại." data-en="Players rent stalls for 1/3/7 days. Deposit refunded if online when it expires. Rent fee is non-refundable.">Player thuê gian hàng 1/3/7 ngày. Đặt cọc hoàn trả nếu online khi hết hạn.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon"><i class="fas fa-tag"></i></div>
-        <div class="fc-title">Quản lý sản phẩm</div>
-        <div class="fc-desc">Thêm/xóa vật phẩm, đặt giá từng loại, xem 25 ô gian hàng theo dạng lưới trực quan.</div>
+        <div class="fc-title" data-vi="Quản lý sản phẩm" data-en="Item Management">Quản lý sản phẩm</div>
+        <div class="fc-desc" data-vi="Thêm/xóa vật phẩm, đặt giá từng loại, xem 25 ô gian hàng theo dạng lưới trực quan." data-en="Add/remove items, set individual prices, view all 25 stall slots in a clear grid layout.">Thêm/xóa vật phẩm, đặt giá từng loại, xem 25 ô gian hàng theo dạng lưới.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon"><i class="fas fa-coins"></i></div>
-        <div class="fc-title">3 loại thanh toán</div>
-        <div class="fc-desc">Bank (chuyển ngay), Tiền mặt và Tiền bẩn. Tiền mặt/bẩn tích lũy và chủ hàng tự đến nhận khi online.</div>
+        <div class="fc-title" data-vi="3 loại thanh toán" data-en="3 Payment Types">3 loại thanh toán</div>
+        <div class="fc-desc" data-vi="Bank (chuyển ngay), Tiền mặt và Tiền bẩn. Tiền mặt/bẩn tích lũy và chủ hàng tự đến nhận." data-en="Bank (instant), Cash and Dirty Money. Cash/dirty accumulates in the stall until the owner collects.">Bank (chuyển ngay), Tiền mặt và Tiền bẩn với cơ chế tích lũy.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon"><i class="fas fa-boxes-stacked"></i></div>
-        <div class="fc-title">Multi-Inventory</div>
-        <div class="fc-desc">Tự động nhận biết và hỗ trợ ox_inventory, qb-inventory, ps-inventory, qs-inventory.</div>
+        <div class="fc-title" data-vi="Multi-Inventory" data-en="Multi-Inventory">Multi-Inventory</div>
+        <div class="fc-desc" data-vi="Tự động nhận biết và hỗ trợ ox_inventory, qb-inventory, ps-inventory, qs-inventory." data-en="Auto-detects and supports ox_inventory, qb-inventory, ps-inventory and qs-inventory.">Tự động nhận biết ox_inventory, qb-inventory, ps-inventory, qs-inventory.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon"><i class="fas fa-gun"></i></div>
-        <div class="fc-title">Hỗ trợ vũ khí</div>
-        <div class="fc-desc">Vật phẩm vũ khí (WEAPON_*) trong ox_inventory được nhận diện và có thể đăng bán như vật phẩm thông thường.</div>
+        <div class="fc-title" data-vi="Hỗ trợ vũ khí" data-en="Weapon Support">Hỗ trợ vũ khí</div>
+        <div class="fc-desc" data-vi="Vật phẩm vũ khí (WEAPON_*) trong ox_inventory được nhận diện và có thể đăng bán bình thường." data-en="Weapon items (WEAPON_*) in ox_inventory are recognized and can be listed for sale normally.">Vật phẩm vũ khí WEAPON_* được nhận diện và đăng bán được.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon"><i class="fas fa-clock-rotate-left"></i></div>
-        <div class="fc-title">Lịch sử giao dịch</div>
-        <div class="fc-desc">Chủ gian hàng xem được 50 giao dịch gần nhất: người mua, sản phẩm, số lượng, giá và thời gian.</div>
+        <div class="fc-title" data-vi="Lịch sử giao dịch" data-en="Transaction History">Lịch sử giao dịch</div>
+        <div class="fc-desc" data-vi="Xem 50 giao dịch gần nhất: người mua, sản phẩm, số lượng, giá và thời gian." data-en="View the 50 most recent transactions: buyer, item, quantity, price and timestamp.">Xem 50 giao dịch gần nhất với đầy đủ thông tin người mua, giá, thời gian.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon"><i class="fas fa-palette"></i></div>
-        <div class="fc-title">UI Dark Pink Theme</div>
-        <div class="fc-desc">Giao diện hồng tối với hiệu ứng hoa anh đào rơi, logo server tùy chỉnh và âm thanh click.</div>
+        <div class="fc-title" data-vi="Dark Pink NUI Theme" data-en="Dark Pink NUI Theme">Dark Pink NUI Theme</div>
+        <div class="fc-desc" data-vi="Giao diện hồng tối với hiệu ứng hoa anh đào, logo server tùy chỉnh và âm thanh click." data-en="Dark pink interface with cherry blossom animation, custom server logo and click sound.">Giao diện hồng tối, hiệu ứng hoa anh đào, logo và âm thanh tuỳ chỉnh.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon"><i class="fas fa-language"></i></div>
-        <div class="fc-title">Song ngữ VI / EN</div>
-        <div class="fc-desc">Toàn bộ text trong game và menu ox_lib đều dịch đầy đủ. Chuyển đổi bằng 1 dòng config.</div>
+        <div class="fc-title" data-vi="Song ngữ VI / EN" data-en="Bilingual VI / EN">Song ngữ VI / EN</div>
+        <div class="fc-desc" data-vi="Toàn bộ text trong game và menu ox_lib đều dịch đầy đủ. Chuyển đổi bằng 1 dòng config." data-en="All in-game text and ox_lib menus are fully translated. Switch with a single config line.">Toàn bộ text đều dịch đầy đủ. Chuyển đổi bằng 1 dòng config.</div>
       </div>
     </div>
   </div>
 
   <!-- INVENTORY -->
   <div class="section" id="inventory">
-    <div class="section-title"><i class="fas fa-boxes-stacked"></i>Multi-Inventory Support</div>
-    <p class="section-sub">Script tự động phát hiện inventory đang chạy theo thứ tự ưu tiên:</p>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-boxes-stacked"></i></span>
+      <span data-vi="Multi-Inventory Support" data-en="Multi-Inventory Support">Multi-Inventory Support</span>
+    </div>
+    <p class="section-sub" data-vi="Script tự động phát hiện inventory đang chạy theo thứ tự ưu tiên:" data-en="The script auto-detects the active inventory in priority order:">
+      Script tự động phát hiện inventory đang chạy theo thứ tự ưu tiên:
+    </p>
     <table>
-      <thead><tr><th>Inventory</th><th>Trạng thái</th><th>Ghi chú</th></tr></thead>
+      <thead><tr><th>Inventory</th><th data-vi="Trạng thái" data-en="Status">Trạng thái</th><th data-vi="Ghi chú" data-en="Notes">Ghi chú</th></tr></thead>
       <tbody>
-        <tr><td><code>ox_inventory</code></td><td><span style="color:var(--success)">✔ Đầy đủ</span></td><td>Hỗ trợ stash, weapons, metadata. Mặc định.</td></tr>
-        <tr><td><code>qb-inventory</code></td><td><span style="color:var(--success)">✔ Hỗ trợ</span></td><td>Dùng QBCore API</td></tr>
-        <tr><td><code>ps-inventory</code></td><td><span style="color:var(--success)">✔ Hỗ trợ</span></td><td>Dùng ps-inventory exports</td></tr>
-        <tr><td><code>qs-inventory</code></td><td><span style="color:var(--success)">✔ Hỗ trợ</span></td><td>Dùng qs-inventory exports</td></tr>
+        <tr><td><code>ox_inventory</code></td><td><span style="color:var(--success)">✔ <span data-vi="Đầy đủ" data-en="Full support">Đầy đủ</span></span></td><td data-vi="Hỗ trợ stash, weapons, metadata. Mặc định." data-en="Supports stash, weapons, metadata. Default.">Hỗ trợ stash, weapons, metadata. Mặc định.</td></tr>
+        <tr><td><code>qb-inventory</code></td><td><span style="color:var(--success)">✔ <span data-vi="Hỗ trợ" data-en="Supported">Hỗ trợ</span></span></td><td data-vi="Dùng QBCore API" data-en="Uses QBCore API">Dùng QBCore API</td></tr>
+        <tr><td><code>ps-inventory</code></td><td><span style="color:var(--success)">✔ <span data-vi="Hỗ trợ" data-en="Supported">Hỗ trợ</span></span></td><td data-vi="Dùng ps-inventory exports" data-en="Uses ps-inventory exports">Dùng ps-inventory exports</td></tr>
+        <tr><td><code>qs-inventory</code></td><td><span style="color:var(--success)">✔ <span data-vi="Hỗ trợ" data-en="Supported">Hỗ trợ</span></span></td><td data-vi="Dùng qs-inventory exports" data-en="Uses qs-inventory exports">Dùng qs-inventory exports</td></tr>
       </tbody>
     </table>
-    <p style="font-size:.85rem;color:var(--muted);margin-top:10px">Để chỉ định thủ công: <code>Config.InventoryType = 'qb-inventory'</code></p>
+    <p style="font-size:.84rem;color:var(--muted);margin-top:10px">
+      <span data-vi="Để chỉ định thủ công:" data-en="To force a specific inventory:">Để chỉ định thủ công:</span>
+      <code>Config.InventoryType = 'qb-inventory'</code>
+    </p>
   </div>
 
   <!-- PAYMENT DETAIL -->
   <div class="section" id="payment-detail">
-    <div class="section-title"><i class="fas fa-coins"></i>Chi tiết loại thanh toán</div>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-coins"></i></span>
+      <span data-vi="Chi tiết loại thanh toán" data-en="Payment Types Detail">Chi tiết loại thanh toán</span>
+    </div>
     <div class="card-grid triple">
       <div class="feature-card">
         <div class="fc-icon">🏦</div>
-        <div class="fc-title">Ngân hàng</div>
-        <div class="fc-desc">Tiền chuyển thẳng vào tài khoản bank của chủ hàng ngay khi bán. Hoạt động kể cả khi chủ hàng offline.</div>
+        <div class="fc-title" data-vi="Ngân hàng" data-en="Bank">Ngân hàng</div>
+        <div class="fc-desc" data-vi="Tiền chuyển thẳng vào tài khoản bank của chủ hàng ngay khi bán. Hoạt động kể cả khi offline." data-en="Money transfers directly to the seller's bank account when sold. Works even when the seller is offline.">Tiền chuyển thẳng vào bank khi bán. Hoạt động kể cả khi offline.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon">💵</div>
-        <div class="fc-title">Tiền mặt</div>
-        <div class="fc-desc">Tiền tích lũy trong gian hàng. Chủ hàng phải online, mở gian hàng và bấm "Nhận tiền" để lấy.</div>
+        <div class="fc-title" data-vi="Tiền mặt" data-en="Cash">Tiền mặt</div>
+        <div class="fc-desc" data-vi="Tiền tích lũy trong gian hàng. Chủ hàng phải online và bấm Nhận tiền để lấy." data-en="Money accumulates in the stall. The owner must be online and click Collect to receive it.">Tiền tích lũy trong gian hàng. Phải online để nhận.</div>
       </div>
       <div class="feature-card">
         <div class="fc-icon">💴</div>
-        <div class="fc-title">Tiền bẩn</div>
-        <div class="fc-desc">Tương tự tiền mặt nhưng nhận dưới dạng black_money. Tiền mất nếu không nhận trước khi hết hạn.</div>
+        <div class="fc-title" data-vi="Tiền bẩn" data-en="Dirty Money">Tiền bẩn</div>
+        <div class="fc-desc" data-vi="Tương tự tiền mặt nhưng nhận dưới dạng black_money. Mất nếu không nhận trước khi hết hạn." data-en="Same as cash but received as black_money. Lost if not collected before the stall expires.">Nhận dưới dạng black_money. Mất nếu không nhận trước hạn.</div>
       </div>
     </div>
     <div class="alert alert-warn">
       <i class="fas fa-triangle-exclamation"></i>
-      <span>Tiền mặt và tiền bẩn đang chờ sẽ <strong>mất vĩnh viễn</strong> nếu gian hàng hết hạn mà chưa được nhận. Khuyến khích người dùng chọn Bank nếu không online thường xuyên.</span>
+      <span data-vi="Tiền mặt và tiền bẩn đang chờ sẽ mất vĩnh viễn nếu gian hàng hết hạn mà chưa nhận. Khuyến khích dùng Bank nếu không online thường xuyên." data-en="Pending cash and dirty money will be permanently lost if the stall expires uncollected. Bank is recommended for players who are not online frequently.">
+        Tiền mặt và tiền bẩn chờ sẽ <strong data-vi="mất vĩnh viễn" data-en="be permanently lost">mất vĩnh viễn</strong> nếu gian hàng hết hạn. Khuyến khích dùng Bank.
+      </span>
     </div>
   </div>
 
   <!-- ADMIN -->
   <div class="section" id="admin">
-    <div class="section-title"><i class="fas fa-shield"></i>Lệnh Admin</div>
-    <p class="section-sub">Yêu cầu nhóm quyền được cấu hình trong <code>Config.AdminGroups</code>.</p>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-shield"></i></span>
+      <span data-vi="Lệnh Admin" data-en="Admin Commands">Lệnh Admin</span>
+    </div>
+    <p class="section-sub" data-vi="Yêu cầu nhóm quyền được cấu hình trong Config.AdminGroups." data-en="Requires a group configured in Config.AdminGroups.">
+      <span data-vi="Yêu cầu nhóm quyền được cấu hình trong" data-en="Requires a group configured in">Yêu cầu nhóm quyền được cấu hình trong</span> <code>Config.AdminGroups</code>.
+    </p>
     <table>
-      <thead><tr><th>Lệnh</th><th>Mô tả</th></tr></thead>
+      <thead><tr><th data-vi="Lệnh" data-en="Command">Lệnh</th><th data-vi="Mô tả" data-en="Description">Mô tả</th></tr></thead>
       <tbody>
         <tr>
           <td><code>/marketcreate</code></td>
-          <td>Bật chế độ đặt prop để lấy toạ độ gian hàng mới. Nhân vật đứng im, prop ghost xuất hiện để điều khiển vị trí.</td>
+          <td data-vi="Bật chế độ đặt prop để lấy tọa độ. Nhân vật đứng im, điều khiển prop ghost bằng WASD/QE." data-en="Activates prop placement mode to get coordinates. Character freezes, control the ghost prop with WASD/QE.">
+            Bật chế độ đặt prop lấy tọa độ. Nhân vật đứng im, điều khiển prop ghost bằng WASD/QE.
+          </td>
         </tr>
         <tr>
           <td><code>/marketremove [id]</code></td>
-          <td>Xoá gian hàng theo ID. Toàn bộ đồ vật bị xoá, không hoàn cọc.</td>
+          <td data-vi="Xoá gian hàng theo ID. Toàn bộ đồ vật bị xoá, không hoàn cọc." data-en="Remove a stall by ID. All items are deleted, no deposit refund.">
+            <span data-vi="Xoá gian hàng theo ID. Toàn bộ đồ vật bị xoá, không hoàn cọc." data-en="Remove a stall by ID. All items are deleted, no deposit refund.">Xoá gian hàng theo ID. Đồ vật bị xoá, không hoàn cọc.</span>
+          </td>
         </tr>
       </tbody>
     </table>
-    <pre><code><span class="c-cmt">-- Cấu hình nhóm quyền admin</span>
-<span class="c-key">Config.AdminGroups</span> = { <span class="c-str">'admin'</span>, <span class="c-str">'superadmin'</span>, <span class="c-str">'god'</span> }</code></pre>
+    <pre><code><span class="ck">Config.AdminGroups</span> = { <span class="cs">'admin'</span>, <span class="cs">'superadmin'</span>, <span class="cs">'god'</span> }</code></pre>
   </div>
 
   <div class="divider"></div>
 
   <!-- GUIDE RENT -->
   <div class="section" id="guide-rent">
-    <div class="section-title"><i class="fas fa-store"></i>Hướng dẫn: Thuê gian hàng</div>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-store"></i></span>
+      <span data-vi="Hướng dẫn: Thuê gian hàng" data-en="Guide: Renting a Stall">Hướng dẫn: Thuê gian hàng</span>
+    </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <div class="step-title">Đến NPC quản lý chợ</div>
-          <div class="step-desc">Tìm NPC có blip trên bản đồ. Đứng gần và nhìn vào để hiện tùy chọn ox_target.</div>
+          <div class="step-title" data-vi="Đến NPC quản lý chợ" data-en="Go to the market NPC">Đến NPC quản lý chợ</div>
+          <div class="step-desc" data-vi="Tìm NPC có blip trên bản đồ. Đứng gần và nhìn vào để hiện tùy chọn ox_target." data-en="Find the NPC marked on the map. Stand close and look at them to see the ox_target options.">Tìm NPC có blip trên bản đồ. Đứng gần và nhìn vào để hiện tùy chọn ox_target.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <div class="step-title">Chọn thời hạn thuê</div>
-          <div class="step-desc">Menu hiện danh sách các gói thuê (1/3/7 ngày). Mỗi gói có phí thuê + tiền đặt cọc. Tổng số tiền sẽ bị trừ từ tài khoản ngân hàng.</div>
+          <div class="step-title" data-vi="Chọn thời hạn thuê" data-en="Choose a rental duration">Chọn thời hạn thuê</div>
+          <div class="step-desc" data-vi="Menu hiện danh sách các gói thuê. Mỗi gói có phí thuê + tiền đặt cọc. Tổng số tiền trừ từ tài khoản ngân hàng." data-en="A menu shows available rental packages. Each has a rent fee + deposit. The total is deducted from your bank account.">Menu hiện danh sách các gói thuê. Mỗi gói có phí thuê + tiền đặt cọc, trừ từ bank.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <div class="step-title">Gian hàng xuất hiện</div>
-          <div class="step-desc">Prop ki-ốt được spawn tại vị trí ngẫu nhiên còn trống. Tên mặc định là <strong>S82 Kiosk</strong>. Vào gian hàng để bắt đầu quản lý.</div>
+          <div class="step-title" data-vi="Gian hàng xuất hiện" data-en="Your stall appears">Gian hàng xuất hiện</div>
+          <div class="step-desc" data-vi="Prop ki-ốt được spawn tại vị trí ngẫu nhiên còn trống. Tên mặc định là S82 Kiosk. Vào gian hàng để bắt đầu quản lý." data-en="A kiosk prop spawns at a random free location. Default name is S82 Kiosk. Visit it to start managing.">Prop ki-ốt spawn tại vị trí trống ngẫu nhiên. Tên mặc định là <strong>S82 Kiosk</strong>.</div>
         </div>
       </div>
     </div>
@@ -610,27 +564,30 @@ td code{font-size:.78rem}
 
   <!-- GUIDE SELL -->
   <div class="section" id="guide-sell">
-    <div class="section-title"><i class="fas fa-tag"></i>Hướng dẫn: Đăng bán sản phẩm</div>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-tag"></i></span>
+      <span data-vi="Hướng dẫn: Đăng bán sản phẩm" data-en="Guide: Selling Items">Hướng dẫn: Đăng bán sản phẩm</span>
+    </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <div class="step-title">Mở gian hàng của mình</div>
-          <div class="step-desc">Đứng gần ki-ốt, chọn <strong>Quản lý Gian Hàng</strong> qua ox_target.</div>
+          <div class="step-title" data-vi="Mở gian hàng của mình" data-en="Open your stall">Mở gian hàng của mình</div>
+          <div class="step-desc" data-vi="Đứng gần ki-ốt, chọn Quản lý Gian Hàng qua ox_target." data-en="Stand near your kiosk and select Manage Shop via ox_target.">Đứng gần ki-ốt, chọn <strong data-vi="Quản lý Gian Hàng" data-en="Manage Shop">Quản lý Gian Hàng</strong> qua ox_target.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <div class="step-title">Tab "Quản lý" → Nhấn "Thêm sản phẩm"</div>
-          <div class="step-desc">Chọn vật phẩm từ túi đồ của bạn, nhập số lượng và giá bán mỗi đơn vị. Vật phẩm sẽ chuyển vào stash gian hàng.</div>
+          <div class="step-title" data-vi="Tab Quản lý → Thêm sản phẩm" data-en="Manage tab → Add Item">Tab Quản lý → Thêm sản phẩm</div>
+          <div class="step-desc" data-vi="Chọn vật phẩm từ túi đồ, nhập số lượng và giá. Vật phẩm chuyển vào stash gian hàng." data-en="Select an item from your inventory, enter the quantity and price. The item is moved to the stall stash.">Chọn vật phẩm từ túi đồ, nhập số lượng và giá. Vật phẩm chuyển vào stash gian hàng.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <div class="step-title">Tùy chỉnh gian hàng</div>
-          <div class="step-desc">Tab <strong>Cài đặt</strong> cho phép đổi tên gian hàng (tối đa 15 ký tự), chọn hình thức nhận tiền và trả gian hàng sớm.</div>
+          <div class="step-title" data-vi="Tuỳ chỉnh trong tab Cài đặt" data-en="Customize in the Settings tab">Tuỳ chỉnh trong tab Cài đặt</div>
+          <div class="step-desc" data-vi="Đổi tên gian hàng (tối đa 15 ký tự), chọn hình thức nhận tiền, trả gian hàng sớm." data-en="Rename your stall (max 15 chars), choose your payment method, or return the stall early.">Đổi tên gian hàng, chọn hình thức nhận tiền, trả gian hàng sớm.</div>
         </div>
       </div>
     </div>
@@ -638,27 +595,30 @@ td code{font-size:.78rem}
 
   <!-- GUIDE BUY -->
   <div class="section" id="guide-buy">
-    <div class="section-title"><i class="fas fa-cart-shopping"></i>Hướng dẫn: Mua hàng</div>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-cart-shopping"></i></span>
+      <span data-vi="Hướng dẫn: Mua hàng" data-en="Guide: Buying Items">Hướng dẫn: Mua hàng</span>
+    </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <div class="step-title">Đến ki-ốt bất kỳ</div>
-          <div class="step-desc">Prop ki-ốt hiển thị tên chủ hàng phía trên. Đứng gần và chọn <strong>Xem Gian Hàng</strong> qua ox_target.</div>
+          <div class="step-title" data-vi="Đến ki-ốt bất kỳ" data-en="Go to any kiosk">Đến ki-ốt bất kỳ</div>
+          <div class="step-desc" data-vi="Prop ki-ốt hiển thị tên chủ hàng phía trên. Đứng gần và chọn Xem Gian Hàng." data-en="The kiosk prop shows the owner's name above it. Stand close and select Browse Shop.">Prop ki-ốt hiển thị tên chủ hàng. Đứng gần và chọn <strong data-vi="Xem Gian Hàng" data-en="Browse Shop">Xem Gian Hàng</strong>.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <div class="step-title">Chọn sản phẩm và số lượng</div>
-          <div class="step-desc">Lưới 20 ô hiển thị toàn bộ sản phẩm với ảnh, tên, giá và số lượng còn lại. Nhấn <strong>Mua ngay</strong> để chọn số lượng.</div>
+          <div class="step-title" data-vi="Chọn sản phẩm" data-en="Select an item">Chọn sản phẩm</div>
+          <div class="step-desc" data-vi="Lưới hiển thị sản phẩm với ảnh, tên, giá và số lượng còn lại. Nhấn Mua ngay." data-en="The grid shows items with image, name, price and remaining stock. Click Buy now.">Lưới hiển thị sản phẩm với ảnh, tên, giá và số lượng còn. Nhấn <strong data-vi="Mua ngay" data-en="Buy now">Mua ngay</strong>.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <div class="step-title">Xác nhận giao dịch</div>
-          <div class="step-desc">Tiền trừ từ túi bank, vật phẩm thêm vào túi đồ. Chủ hàng nhận tiền (trừ % thuế) theo hình thức đã cài đặt.</div>
+          <div class="step-title" data-vi="Xác nhận giao dịch" data-en="Confirm the transaction">Xác nhận giao dịch</div>
+          <div class="step-desc" data-vi="Tiền trừ từ bank, vật phẩm vào túi đồ. Chủ hàng nhận tiền (trừ % thuế) theo hình thức đã cài đặt." data-en="Money deducted from bank, item added to inventory. Seller receives the amount minus tax, per their chosen payment method.">Tiền trừ từ bank, vật phẩm vào túi. Chủ hàng nhận tiền (trừ thuế).</div>
         </div>
       </div>
     </div>
@@ -666,38 +626,66 @@ td code{font-size:.78rem}
 
   <!-- LOCALIZATION -->
   <div class="section" id="localization">
-    <div class="section-title"><i class="fas fa-language"></i>Ngôn ngữ</div>
-    <p class="section-sub">Chuyển ngôn ngữ chỉ cần 1 dòng trong <code>config.lua</code>:</p>
-    <pre><code><span class="c-key">Config.Locale</span> = <span class="c-str">'vi'</span>  <span class="c-cmt">-- Tiếng Việt</span>
-<span class="c-key">Config.Locale</span> = <span class="c-str">'en'</span>  <span class="c-cmt">-- English</span></code></pre>
-    <p style="font-size:.85rem;color:var(--muted);margin-top:12px">Tất cả text bao gồm thông báo, menu ox_lib và toàn bộ NUI đều được dịch. Thêm ngôn ngữ mới bằng cách tạo file <code>locales/xx.lua</code> theo cấu trúc tương tự.</p>
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-language"></i></span>
+      <span data-vi="Ngôn ngữ" data-en="Localization">Ngôn ngữ</span>
+    </div>
+    <p class="section-sub" data-vi="Chuyển ngôn ngữ chỉ cần 1 dòng trong config.lua:" data-en="Switch language with a single line in config.lua:">
+      <span data-vi="Chuyển ngôn ngữ chỉ cần 1 dòng trong" data-en="Switch language with a single line in">Chuyển ngôn ngữ chỉ cần 1 dòng trong</span> <code>config.lua</code>:
+    </p>
+    <pre><code><span class="ck">Config.Locale</span> = <span class="cs">'vi'</span>  <span class="cc">-- Tiếng Việt</span>
+<span class="ck">Config.Locale</span> = <span class="cs">'en'</span>  <span class="cc">-- English</span></code></pre>
     <div class="alert alert-tip">
       <i class="fas fa-lightbulb"></i>
-      <span>Để tạo ngôn ngữ mới: copy <code>locales/en.lua</code>, đổi tên thành <code>locales/xx.lua</code>, dịch các giá trị và đặt <code>Config.Locale = 'xx'</code>.</span>
+      <span data-vi="Thêm ngôn ngữ mới: copy locales/en.lua, đổi tên thành locales/xx.lua, dịch các giá trị và đặt Config.Locale = 'xx'." data-en="To add a new language: copy locales/en.lua, rename it to locales/xx.lua, translate the values and set Config.Locale = 'xx'.">
+        <span data-vi="Thêm ngôn ngữ mới: copy" data-en="To add a new language: copy">Thêm ngôn ngữ mới: copy</span>
+        <code>locales/en.lua</code>,
+        <span data-vi="đổi tên thành" data-en="rename to">đổi tên thành</span>
+        <code>locales/xx.lua</code>,
+        <span data-vi="dịch các giá trị và đặt" data-en="translate the values and set">dịch các giá trị và đặt</span>
+        <code>Config.Locale = 'xx'</code>.
+      </span>
     </div>
   </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <span>© 2024 <a href="#">S82 Scripts</a> · S82 Kiosk v1.0.0</span>
-    <span>Made with 🌸 for FiveM</span>
+    <span data-vi="Được làm bằng 🌸 cho FiveM" data-en="Made with 🌸 for FiveM">Được làm bằng 🌸 cho FiveM</span>
   </div>
 
 </main>
 
 <script>
-const links = document.querySelectorAll('.nav-link');
+function setLang(lang) {
+  document.querySelectorAll('[data-vi]').forEach(el => {
+    el.innerHTML = el.dataset[lang] || el.innerHTML;
+  });
+  document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('s82_lang', lang); } catch(e){}
+}
+
+// Scrollspy
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
 const sections = document.querySelectorAll('.section, .hero');
-const observer = new IntersectionObserver(entries => {
+const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      links.forEach(l => l.classList.remove('active'));
+      navLinks.forEach(l => l.classList.remove('active'));
       const a = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
       if (a) a.classList.add('active');
     }
   });
 }, { rootMargin: '-20% 0px -70% 0px' });
-sections.forEach(s => observer.observe(s));
+sections.forEach(s => io.observe(s));
+
+// Init language
+try {
+  const saved = localStorage.getItem('s82_lang');
+  if (saved === 'en') setLang('en');
+} catch(e){}
 </script>
 </body>
 </html>
